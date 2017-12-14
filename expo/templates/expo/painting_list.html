@@ -8,7 +8,7 @@
     {% for painting in paintings %}
       <div>
           <h1><a href="">{{ painting.artist }}</a></h1>
-          <p>Year: {{ painting.created_date.year }}</p>
+          <h2>{{ painting.title }} (Year: {{ painting.created_date.year }}) </h2>
           <p>{{ painting.text | linebreaksbr }}</p>
       </div>
     {% endfor %}
