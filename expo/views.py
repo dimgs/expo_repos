@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def painting_list(request):
+    return render(request, 'expo/painting_list.html', {})
