@@ -1,12 +1,17 @@
 <html>
     <head>
-        <title>Artist gallery</title>
+        <title>Artist Gallery</title>
     </head>
 
     <body>
-        <div>
-            <h1><a href="/">Artist gallery</a></h1>
-        </div>
+
+    {% for painting in paintings %}
+      <div>
+          <h1><a href="">{{ painting.artist }}</a></h1>
+          <p>Year: {{ painting.created_date.year }}</p>
+          <p>{{ painting.text | linebreaksbr }}</p>
+      </div>
+    {% endfor %}
 
 
     </body>
