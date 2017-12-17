@@ -1,47 +1,13 @@
+{% extends 'expo/base.html' %}
 {% load staticfiles %}
 
-<html>
-    <head>
-        <title>Art Gallery</title>
 
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-        <link rel="stylesheet" href="{% static 'css/expo.css' %}">
-    </head>
-
-    <body>
-
-
-        <div class="page-header">
-            <h1><a href="/">Art Gallery</a></h1>
-        </div>
-
-
-
-
-        <div class="content">
-            <div class="sidebar-menu">
-                <h1>Menu</h1>
-
-            </div>
-
-            <div class="main-page">
-                    {% for painting in paintings %}
-                    <div class="painting">
-                        <h1><a href="">{{ painting.artist }}</a></h1>
-                        <h3>{{ painting.title }}<div class="year" style="display: inline"> (Year: {{ painting.created_date.year }})</div></h3>
-                        <p>{{ painting.text | linebreaksbr }}</p>
-                    </div>
-                    {% endfor %}
-            </div>
-
-
-        </div>
-
-
-    </body>
-</html>
+{% block content %}
+    {% for paint in paint_objects %}
+    <div class="painting">
+        <h1><a href="{% url 'painting_detail' pk=paint.pk %}">{{ paint.artist }}</a></h1>
+        <h3>{{ paint.title }}<div class="year" style="display: inline"> (Year: {{ paint.created_date.year }})</div></h3>
+        <p>{{ paint.text | linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
