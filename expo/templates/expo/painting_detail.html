@@ -1,11 +1,10 @@
-{% extends 'expo/base.html' %}
-
+{% extends 'expo/old_base.html' %}
 
 
 {% block content %}
     <div class="painting">
         <h1><a href="{% url 'painting_detail' pk=paint_object.pk %}">{{ paint_object.artist }}</a></h1>
-        <img src="/static/images/{{ paint_object.title.lower.split|join:"_" }}.jpg" alt="{{ paint_object.title }}" width="110" height="150" align="right" />
+        <!-- <img src="/static/images/paintings/{{ paint_object.title.lower.split|join:"_" }}.jpg" alt="{{ paint_object.title }}" width="110" height="150" align="right" /> -->
         <h3>{{ paint_object.title }}<div class="year" style="display: inline"> (Year: {{ paint_object.created_date.year }})</div></h3>
         <p>{{ paint_object.text | linebreaksbr }}</p>
     </div>

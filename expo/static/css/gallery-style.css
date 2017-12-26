@@ -1,0 +1,25 @@
+.gallery-whole-content{
+    border: solid red;
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+.gallery-left-sidebar{
+    position: absolute;
+    width: 300px;
+    padding: 10px;
+    border: solid green;
+}
+
+.gallery-main-content{
+    position: static;
+    margin-left: 300px;
+    padding: 10px;
+    max-width: 90em;
+    border: solid blue;
+}
+
+.gallery-painting-text{
+    border: solid yellow;
+    margin-bottom: 10px;
+}

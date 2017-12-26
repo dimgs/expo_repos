@@ -1,0 +1,37 @@
+{% extends 'expo/base.html' %}
+{% load staticfiles %}
+
+
+
+{% block main_part %}
+
+    <div id="head">
+        <div class="line">
+            <h1 style="color: white">Gallery</h1>
+        </div>
+    </div>
+
+
+    <div class="gallery-whole-content">
+        <div class="gallery-left-sidebar">
+            <h1>Menu</h1>
+            <ul>
+                <li>First item</li>
+                <li>Second item</li>
+                <li>Third item</li>
+            </ul>
+        </div>
+
+        <div class="gallery-main-content">
+            {% for paint in paint_objects %}
+                <div class="gallery-painting-text">
+                    <h1><a href="{% url 'painting_detail' pk=paint.pk %}">{{ paint.artist }}</a></h1>
+                    <h3>{{ paint.title }} (Year: {{ paint.created_date.year }})</h3>
+                    <p>{{ paint.text | linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
