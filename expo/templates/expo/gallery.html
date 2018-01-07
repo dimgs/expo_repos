@@ -1,6 +1,7 @@
 {% extends 'expo/base.html' %}
 {% load staticfiles %}
 
+<link rel="stylesheet" href="{% static 'css/gallery-style.css' %}">
 
 
 {% block main_part %}
@@ -12,24 +13,120 @@
     </div>
 
 
+    <!-- WHOLE CONTENT -->
     <div class="gallery-whole-content">
+        <!-- LEFT SIDEBAR -->
         <div class="gallery-left-sidebar">
-            <h1>Menu</h1>
-            <ul>
-                <li>First item</li>
-                <li>Second item</li>
-                <li>Third item</li>
-            </ul>
+            <div class="gallery-left-sidebar-filters">
+                <h1 class="img-rounded">FILTERS</h1>
+
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Artists
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        {% for artist in artists_distinct %}
+                            <li><a href="#">{{ artist.artist_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Genres
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        {% for genre in genres_distint %}
+                            <li><a href="#">{{ genre.genre_title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Periods
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        {% for period in periods_distinct %}
+                            <li><a href="#">{{ period.period_title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Countries
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        {% for country in countries_distinct %}
+                            <li><a href="#">{{ country.country_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Museums
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        {% for museum in museums_distinct %}
+                            <li><a href="#">{{ museum.museum_title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
 
+
+        <!-- MAIN CONTENT -->
         <div class="gallery-main-content">
+            <div class="container-fluid">
+                <div class="row">
+                    {% for paint in paint_objects %}
+                        {% if paint.art_image %}
+                            <div class="col-md-4">
+                                <a href="{% url 'painting_detail' pk=paint.pk %}"><h1 class="img-rounded">{{ paint.title }}</h1></a>
+                                <a href="{% url 'painting_detail' pk=paint.pk %}"><img class="img-rounded" src="{{ paint.art_image.url }}" alt="{{ paint.title }}" /></a>
+                                <p class="img-rounded">{{ paint.description }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        <!-- ----------------------------------- COMMENTS ------------------------------------------------
+             PAINTINGS (TEXT - no images - first version)
             {% for paint in paint_objects %}
                 <div class="gallery-painting-text">
-                    <h1><a href="{% url 'painting_detail' pk=paint.pk %}">{{ paint.artist }}</a></h1>
+                    <h1><a href="{% url 'painting_detail' pk=paint.pk %}">{{ paint.f_artist }}</a></h1>
                     <h3>{{ paint.title }} (Year: {{ paint.created_date.year }})</h3>
-                    <p>{{ paint.text | linebreaksbr }}</p>
+                    <p>{{ paint.description | linebreaksbr }}</p>
+                    <p>Category: {{ paint.f_genre }}</p>
+                    <p>Museum: {{ paint.f_museum }}</p>
+                    <p>Period: {{ paint.f_period }}</p>
+
+                    <p>Artist's city: {{ paint.f_artist.f_city }}</p>
+                    <p>Artist's country: {{ paint.f_artist.f_city.f_country }}</p>
+
+                    <p>Museum's city: {{ paint.f_museum.f_city }}</p>
+                    <p>Museum's country: {{ paint.f_museum.f_city.f_country }}</p>
                 </div>
             {% endfor %}
+         ----------------------------------------------------------------------------------------------------- -->
+
         </div>
     </div>
 

@@ -13,13 +13,13 @@
 body {
 	background:none repeat scroll 0 0 #d3d3d3;
 	font-size:100%;
-  font-family:'Cherry Swash', cursive;
-  color:#444;
+    font-family:'Cherry Swash', cursive;
+    color:#444;
   }
 h1, h2, h3, h4, h5, h6 {
-  color:#444;
-  font-weight: normal;
-  margin:0.2em 0 0.2em 0;    
+    color:#444;
+    font-weight: normal;
+    margin:0.2em 0 0.2em 0;
 }
 h1 {font-size:2.4em;}
 h2 {font-size:2em;}  
@@ -29,18 +29,18 @@ h5 {font-size:1em;}
 h6 {font-size:0.9em;}    
 a, a:link, a:visited, a:hover, a:active {
 	text-decoration:none;
-  color:#444;
+    color:#444;
 	}
 img {
-  border:0;
-  display:block;
+    border:0;
+    display:block;
 	height:auto;
 	max-width:100%;
-  width:auto;
+    width:auto;
 	}
 .owl-item img, .full-img {
-  max-width: none;
-	width:100%;
+   max-width: none;
+   width:100%;
 	}  
 table {
 	background:none repeat scroll 0 0 #fff;

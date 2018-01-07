@@ -1,11 +1,48 @@
-{% extends 'expo/old_base.html' %}
+{% extends 'expo/base.html' %}
 
 
-{% block content %}
-    <div class="painting">
-        <h1><a href="{% url 'painting_detail' pk=paint_object.pk %}">{{ paint_object.artist }}</a></h1>
-        <!-- <img src="/static/images/paintings/{{ paint_object.title.lower.split|join:"_" }}.jpg" alt="{{ paint_object.title }}" width="110" height="150" align="right" /> -->
-        <h3>{{ paint_object.title }}<div class="year" style="display: inline"> (Year: {{ paint_object.created_date.year }})</div></h3>
-        <p>{{ paint_object.text | linebreaksbr }}</p>
+{% block main_part %}
+
+    <div id="head">
+        <div class="line">
+            <h1 style="color: white">Art Gallery</h1>
+        </div>
+    </div>
+
+    <div class="gallery-whole-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    {% if paint_object.art_image %}
+                        <img src="{{ paint_object.art_image.url }}" />
+                    {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <div class="col-md-6">
+                        <h1 class="img-rounded">{{ paint_object.title }}</h1>
+
+                        <p><button type="button" class="btn btn-primary btn-lg">Year</button> <button type="button" class="btn btn-primary btn-lg">{{ paint_object.created_date.year }}</button>
+
+                        </p>
+                        <p><button type="button" class="btn btn-primary btn-lg">Artist</button> <a href="{% url 'gallery' %}?artist_id={{ paint_object.f_artist.pk }}" ><button type="button" class="btn btn-warning btn-lg">{{ paint_object.f_artist }}</button></a></p>
+                        <p><button type="button" class="btn btn-primary btn-lg">Category</button> <a href="{% url 'gallery' %}?genre_id={{ paint_object.f_genre.pk }}" ><button type="button" class="btn btn-danger btn-lg">{{ paint_object.f_genre }}</button></a></p>
+                        <p><button type="button" class="btn btn-primary btn-lg">Museum</button> <a href="{% url 'gallery' %}?museum_id={{ paint_object.f_museum.pk }}" ><button type="button" class="btn btn-success btn-lg">{{ paint_object.f_museum }}</button></a></p>
+                        <p><a href="{% url 'gallery' %}?period_id={{ paint_object.f_period.pk }}" > <button type="button" class="btn btn-primary btn-lg">Period</button> <a href="{% url 'gallery' %}?period_id={{ paint_object.f_period.pk }}" ><button type="button" class="btn btn-primary btn-lg">{{ paint_object.f_period }}</button></a></p>
+
+                        <p><button type="button" class="btn btn-primary btn-lg">Artist's city</button> <a href="{% url 'gallery' %}?artist_city_id={{ paint_object.f_artist.f_city.pk }}" ><button type="button" class="btn btn-warning btn-lg">{{ paint_object.f_artist.f_city }}</button></a></p>
+                        <p><a href="{% url 'gallery' %}?artist_country_id={{ paint_object.f_artist.f_city.f_country.pk }}" > <button type="button" class="btn btn-primary btn-lg">Artist's country</button> <a href="{% url 'gallery' %}?artist_country_id={{ paint_object.f_artist.f_city.f_country.pk }}" ><button type="button" class="btn btn-danger btn-lg">{{ paint_object.f_artist.f_city.f_country }}</button></a></p>
+
+                        <p><a href="{% url 'gallery' %}?museum_city_id={{ paint_object.f_museum.f_city.pk }}" > <button type="button" class="btn btn-primary btn-lg">Museum's city</button> <a href="{% url 'gallery' %}?museum_city_id={{ paint_object.f_museum.f_city.pk }}" ><button type="button" class="btn btn-success btn-lg">{{ paint_object.f_museum.f_city }}</button></a></p>
+                        <p><a href="{% url 'gallery' %}?museum_country_id={{ paint_object.f_museum.f_city.f_country.pk }}"> <button type="button" class="btn btn-primary btn-lg">Museum's country</button> <a href="{% url 'gallery' %}?museum_country_id={{ paint_object.f_museum.f_city.f_country.pk }}"><button type="button" class="btn btn-primary btn-lg">{{ paint_object.f_museum.f_city.f_country }}</button></a></p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h1 class="img-rounded">Description</h1>
+                        <textarea class="img-rounded">{{ paint_object.description }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
