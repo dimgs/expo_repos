@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
+from django.db.models import Q
 from expo.models import *
 
 ########################################################################################################################
 
-def gallery(request):
+def gallery(request, null=None):
     artist_ID = request.GET.get('artist_id', '')
     genre_ID = request.GET.get('genre_id', '')
     museum_ID = request.GET.get('museum_id', '')
@@ -13,6 +14,7 @@ def gallery(request):
     artist_country_ID = request.GET.get('artist_country_id', '')
     museum_city_ID = request.GET.get('museum_city_id', '')
     museum_country_ID = request.GET.get('museum_country_id', '')
+    txt = request.GET.get('txt', '')  # Search field text
 
     try:
         artist_ID = int(artist_ID)
@@ -54,8 +56,17 @@ def gallery(request):
     except:
         museum_country_ID = False
 
+
     if (artist_ID == False) and (genre_ID == False) and (museum_ID == False) and (period_ID == False) and (artist_city_ID == False) and (artist_country_ID == False) and (museum_city_ID == False) and (museum_country_ID == False):
-        paint_objects = Painting.objects.all().order_by('title')
+       #if-else for "Search button"
+       if (txt == ''):
+           paint_objects = Painting.objects.all().order_by('title')
+       else:
+           paint_objects = Painting.objects.filter(Q(title__contains = txt) | Q(description__contains = txt) |
+                                                   Q(f_artist__artist_name__contains = txt) | Q(f_genre__genre_title__contains = txt) |
+                                                   Q(f_period__period_title__contains = txt) | Q(f_museum__museum_title__contains = txt) |
+                                                   Q(f_artist__f_city__city_name__contains = txt) | Q(f_museum__f_city__city_name__contains = txt) |
+                                                   Q(f_museum__museum_title__contains = txt)).order_by('title')
     elif artist_ID != False:
         paint_objects = Painting.objects.filter(f_artist = artist_ID).order_by('title')
     elif genre_ID != False:
@@ -120,11 +131,11 @@ def cities(request):
     return render(request, 'expo/cities.html', locals())
 
 ########################################################################################################################
-
+'''
 def annotate_genres(request):
     genres_annotate = Genre.objects.annotate(number_of_entries=Count('painting'))
     return render(request, 'expo/annotate_genres.html', locals())
-
+'''
 ########################################################################################################################
 
 

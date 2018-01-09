@@ -1,10 +1,12 @@
+/* gallery.html */
 /* Whole content (box) formatting */
 .gallery-whole-content{
     /* border: solid red; */
+    position: relative;
     color: #FFFFFF;
     background-image: url('../img/background-gallery.jpg');
-    opacity: 1;
-    position: relative;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
 }
 
 /* Left sidebar (box) formatting */
@@ -13,7 +15,11 @@
     position: absolute;
     width: 300px;
     height: 100%;
-    padding: 10px;
+    padding: 40px 10px 0 10px;
+}
+
+div.gallery-left-sidebar input {
+    color: grey;
 }
 
 div.gallery-left-sidebar-filters {
@@ -22,20 +28,7 @@ div.gallery-left-sidebar-filters {
     position: sticky;
     top: 20px;
     left: 20px;
-}
-
-div.gallery-left-sidebar-filters h1 {
-    background-color: #FFFFFF;
-    color: #000000;
-    margin-top: 30px;
-    margin-bottom: 25px;
-    border: #2fcbe0;
-    width: 100%;
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-    box-shadow: 5px 5px 5px lightslategrey;
-
+    margin-top: 40px;
 }
 
 div.gallery-left-sidebar-filters p {
@@ -48,7 +41,7 @@ div.gallery-left-sidebar-filters button{
     width: 100%;
     margin: auto;
     font-size: 18px;
-    box-shadow: 5px 5px 5px lightslategrey;
+    box-shadow: 10px 10px 10px lightslategrey;
 
 }
 
@@ -57,6 +50,25 @@ div.gallery-left-sidebar-filters ul {
     margin: auto;
     font-size: 15px;
 }
+
+div.gallery-checkbox-artist {
+    margin-top: 30px;
+    width: 100%;
+}
+
+
+div.gallery-checkboxes-items {
+    border: solid grey 1px;
+    padding-left: 10px;
+    width: 100%;
+    height: auto;
+    max-height: 10em;
+    overflow: auto;
+}
+
+
+
+
 /* Main content (box) formatting */
 .gallery-main-content {
     /* border: solid blue; */
@@ -79,7 +91,6 @@ div.col-md-4 h1 {
     /* border: solid red; */
     background-color: #FFFFFF;
     color: #000000;
-    box-shadow: 5px 5px 5px lightslategrey;
     font-weight: bold;
     display: block;
     margin: auto auto 20px auto;
@@ -92,10 +103,12 @@ div.col-md-4 h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    box-shadow: 8px 8px 8px lightslategrey;
 }
 
 div.col-md-4 h1:hover {
-    box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    width: 80%;
+    box-shadow: 1px 1px 2px black, 0 0 15px blue, 0 0 5px darkblue;
 }
 
 div.col-md-4 img {
@@ -105,12 +118,13 @@ div.col-md-4 img {
     max-width: 100%;
     height: 300px;
     max-height: 300px;
-    box-shadow: 5px 5px 5px lightslategrey;
-
+    box-shadow: 8px 8px 8px lightslategrey;
 }
 
 div.col-md-4 img:hover {
-    opacity: 0.7;
+    border: none;
+    box-shadow: 10px 10px 10px black;
+    opacity: 0.8;
     filter: alpha(opacity=70);
 
 }
@@ -125,10 +139,11 @@ div.col-md-4 p {
     text-align: center;
     margin: 10px auto auto auto;
     padding: 4px;
-    box-shadow: 5px 5px 5px lightslategrey;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    box-shadow: 8px 8px 8px lightslategrey;
+
 }
 
 
@@ -155,6 +170,7 @@ div.col-md-6 h1 {
     text-align: center;
     font-weight: bold;
     opacity: 0.8;
+    filter: alpha(opacity=80);
 }
 
 div.col-md-6 button{
@@ -170,5 +186,6 @@ div.col-md-6 textarea {
     color: #000000;
     font-size: 17px;
     opacity: 0.8;
+    filter: alpha(opacity=80);
 }
 
