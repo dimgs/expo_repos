@@ -4,87 +4,241 @@ from django.db.models import Q
 from expo.models import *
 
 ########################################################################################################################
+###################### Gallery ###########################
 
 def gallery(request, null=None):
-    artist_ID = request.GET.get('artist_id', '')
-    genre_ID = request.GET.get('genre_id', '')
-    museum_ID = request.GET.get('museum_id', '')
-    period_ID = request.GET.get('period_id', '')
-    artist_city_ID = request.GET.get('artist_city_id', '')
-    artist_country_ID = request.GET.get('artist_country_id', '')
-    museum_city_ID = request.GET.get('museum_city_id', '')
-    museum_country_ID = request.GET.get('museum_country_id', '')
-    txt = request.GET.get('txt', '')  # Search field text
+    artist_id = request.GET.get('artist_id', '')
+    genre_id = request.GET.get('genre_id', '')
+    museum_id = request.GET.get('museum_id', '')
+    period_id = request.GET.get('period_id', '')
+    artist_city_id = request.GET.get('artist_city_id', '')
+    artist_country_id = request.GET.get('artist_country_id', '')
+    museum_city_id = request.GET.get('museum_city_id', '')
+    museum_country_id = request.GET.get('museum_country_id', '')
+    txt = request.GET.get('txt', '')  #Search text field
+    order_status_date = request.GET.get('order_status_date', '')
+    order_status_popularity = request.GET.get('order_status_popularity', '')
+    order_status_rating = request.GET.get('order_status_rating', '')
 
     try:
-        artist_ID = int(artist_ID)
+        artist_id = int(artist_id)
     except:
-        artist_ID = False
+        artist_id = False
 
     try:
-        genre_ID = int(genre_ID)
+        genre_id = int(genre_id)
     except:
-        genre_ID = False
+        genre_id = False
 
     try:
-        museum_ID = int(museum_ID)
+        museum_id = int(museum_id)
     except:
-        museum_ID = False
+        museum_id = False
 
     try:
-        period_ID = int(period_ID)
+        period_id = int(period_id)
     except:
-        period_ID = False
+        period_id = False
 
     try:
-        artist_city_ID = int(artist_city_ID)
+        artist_city_id = int(artist_city_id)
     except:
-        artist_city_ID = False
+        artist_city_id = False
 
     try:
-        artist_country_ID = int(artist_country_ID)
+        artist_country_id = int(artist_country_id)
     except:
-        artist_country_ID = False
+        artist_country_id = False
 
     try:
-        museum_city_ID = int(museum_city_ID)
+        museum_city_id = int(museum_city_id)
     except:
-        museum_city_ID = False
+        museum_city_id = False
 
     try:
-        museum_country_ID = int(museum_country_ID)
+        museum_country_id = int(museum_country_id)
     except:
-        museum_country_ID = False
+        museum_country_id = False
+
+    try:
+        order_status_date = int(order_status_date)
+    except:
+        order_status_date = 'empty'
+
+    try:
+        order_status_rating = int(order_status_rating)
+    except:
+        order_status_rating = 'empty'
+
+    try:
+        order_status_popularity = int(order_status_popularity)
+    except:
+        order_status_popularity = 'empty'
 
 
-    if (artist_ID == False) and (genre_ID == False) and (museum_ID == False) and (period_ID == False) and (artist_city_ID == False) and (artist_country_ID == False) and (museum_city_ID == False) and (museum_country_ID == False):
-       #if-else for "Search button"
+#######################################################################################################################
+################################## DICTIONARIES #################################
+
+    #LOCAL VARIABLES "id" DICTIONARY
+    var_dict = {'artist_id':artist_id, 'genre_id':genre_id, 'museum_id':museum_id, 'period_id':period_id,
+                'artist_country_id':artist_country_id, 'museum_city_id':museum_city_id,
+                'museum_country_id':museum_country_id }
+
+
+    #FOREIGN KEYS & "id" DICTIONARY
+    foreign_id_dict = { 'f_artist':artist_id, 'f_genre':genre_id, 'f_museum':museum_id, 'f_period':period_id,
+                        'f_artist__f_city':artist_city_id, 'f_artist__f_city__f_country':artist_country_id,
+                        'f_museum__f_city':museum_city_id, 'f_museum__f_city__f_country':museum_country_id }
+
+#######################################################################################################################
+
+    #Checking if all items of "var_dict"(variables dictionary) are FALSE
+    for key, value in var_dict.items():
+        if value == False:
+            result_var_dict = False
+        else:
+            result_var_dict = True
+            break
+
+#######################################################################################################################
+############################# SORTING ####################################
+
+    #If all items of "var_dict"(variables dictionary) are FALSE
+    if result_var_dict == False:
+       #Search field without text
        if (txt == ''):
-           paint_objects = Painting.objects.all().order_by('title')
-       else:
-           paint_objects = Painting.objects.filter(Q(title__contains = txt) | Q(description__contains = txt) |
-                                                   Q(f_artist__artist_name__contains = txt) | Q(f_genre__genre_title__contains = txt) |
-                                                   Q(f_period__period_title__contains = txt) | Q(f_museum__museum_title__contains = txt) |
-                                                   Q(f_artist__f_city__city_name__contains = txt) | Q(f_museum__f_city__city_name__contains = txt) |
-                                                   Q(f_museum__museum_title__contains = txt)).order_by('title')
-    elif artist_ID != False:
-        paint_objects = Painting.objects.filter(f_artist = artist_ID).order_by('title')
-    elif genre_ID != False:
-        paint_objects = Painting.objects.filter(f_genre = genre_ID).order_by('title')
-    elif museum_ID != False:
-        paint_objects = Painting.objects.filter(f_museum = museum_ID).order_by('title')
-    elif period_ID != False:
-        paint_objects = Painting.objects.filter(f_period = period_ID).order_by('title')
-    elif artist_city_ID != False:
-        paint_objects = Painting.objects.filter(f_artist__f_city = artist_city_ID).order_by('title')
-    elif artist_country_ID != False:
-        paint_objects = Painting.objects.filter(f_artist__f_city__f_country = artist_country_ID).order_by('title')
-    elif museum_city_ID != False:
-        paint_objects = Painting.objects.filter(f_museum__f_city = museum_city_ID).order_by('title')
-    elif museum_country_ID != False:
-        paint_objects = Painting.objects.filter(f_museum__f_city__f_country = museum_country_ID).order_by('title')
+           #Order Status "Date" - Descending
+            if order_status_date == 1:
+                paint_objects = Painting.objects.all().order_by('-published_date')
+                order_status_date = 0
+            #Order Status "Date" - Ascending
+            elif order_status_date == 0:
+                paint_objects = Painting.objects.all().order_by('published_date')
+                order_status_date = 1
+            #Order Status "Popularity" - Descending
+            elif order_status_popularity == 1:
+                paint_objects = Painting.objects.all().order_by('-counter_popularity')
+                order_status_popularity = 0
+            #Order Status "Popularity" - Ascending
+            elif order_status_popularity == 0:
+                paint_objects = Painting.objects.all().order_by('counter_popularity')
+                order_status_popularity = 1
+            #Order Status "Rating" - Descending
+            elif order_status_rating == 1:
+                paint_objects = Painting.objects.all().order_by('-rating')
+                order_status_rating = 0
+            #Order Status "Rating" - Ascending
+            elif order_status_rating == 0:
+                paint_objects = Painting.objects.all().order_by('rating')
+                order_status_rating = 1
+            #With default Order
+            else:
+                paint_objects = Painting.objects.all().order_by('-published_date')
 
-    #Artist distinct
+       #SEARCH FIELD with text entry
+       else:
+           #Order Status "Date" - Descending
+            if order_status_date == 1:
+                paint_objects = Painting.objects.filter(Q(title__contains=txt) | Q(description__contains=txt) |
+                                                        Q(f_artist__artist_name__contains=txt) | Q(f_genre__genre_title__contains=txt) |
+                                                        Q(f_period__period_title__contains=txt) | Q(f_museum__museum_title__contains=txt) |
+                                                        Q(f_artist__f_city__city_name__contains=txt) | Q(f_museum__f_city__city_name__contains=txt) |
+                                                        Q(f_museum__museum_title__contains=txt)).order_by('-published_date')
+                order_status_date = 0
+            #Order Status "Date" - Ascending
+            elif order_status_date == 0:
+                paint_objects = Painting.objects.filter(Q(title__contains=txt) | Q(description__contains=txt) |
+                                                        Q(f_artist__artist_name__contains=txt) | Q(f_genre__genre_title__contains=txt) |
+                                                        Q(f_period__period_title__contains=txt) | Q(f_museum__museum_title__contains=txt) |
+                                                        Q(f_artist__f_city__city_name__contains=txt) | Q(f_museum__f_city__city_name__contains=txt) |
+                                                        Q(f_museum__museum_title__contains=txt)).order_by('published_date')
+                order_status_date = 1
+            #Order Status "Popularity" - Descending
+            elif order_status_popularity == 1:
+                paint_objects = Painting.objects.filter(Q(title__contains=txt) | Q(description__contains=txt) |
+                                                        Q(f_artist__artist_name__contains=txt) | Q(f_genre__genre_title__contains=txt) |
+                                                        Q(f_period__period_title__contains=txt) | Q(f_museum__museum_title__contains=txt) |
+                                                        Q(f_artist__f_city__city_name__contains=txt) | Q(f_museum__f_city__city_name__contains=txt) |
+                                                        Q(f_museum__museum_title__contains=txt)).order_by('-counter_popularity')
+                order_status_popularity = 0
+            #Order Status "Popularity" - Ascending
+            elif order_status_popularity == 0:
+                paint_objects = Painting.objects.filter(Q(title__contains=txt) | Q(description__contains=txt) |
+                                                        Q(f_artist__artist_name__contains=txt) | Q(f_genre__genre_title__contains=txt) |
+                                                        Q(f_period__period_title__contains=txt) | Q(f_museum__museum_title__contains=txt) |
+                                                        Q(f_artist__f_city__city_name__contains=txt) | Q(f_museum__f_city__city_name__contains=txt) |
+                                                        Q(f_museum__museum_title__contains=txt)).order_by('counter_popularity')
+                order_status_popularity = 1
+            #Order Status "Rating" - Descending
+            elif order_status_rating == 1:
+                paint_objects = Painting.objects.filter(Q(title__contains=txt) | Q(description__contains=txt) |
+                                                        Q(f_artist__artist_name__contains=txt) | Q(f_genre__genre_title__contains=txt) |
+                                                        Q(f_period__period_title__contains=txt) | Q(f_museum__museum_title__contains=txt) |
+                                                        Q(f_artist__f_city__city_name__contains=txt) | Q(f_museum__f_city__city_name__contains=txt) |
+                                                        Q(f_museum__museum_title__contains=txt)).order_by('-rating')
+                order_status_rating = 0
+            #Order Status "Rating" - Ascending
+            elif order_status_rating == 0:
+                paint_objects = Painting.objects.filter(Q(title__contains=txt) | Q(description__contains=txt) |
+                                                        Q(f_artist__artist_name__contains=txt) | Q(f_genre__genre_title__contains=txt) |
+                                                        Q(f_period__period_title__contains=txt) | Q(f_museum__museum_title__contains=txt) |
+                                                        Q(f_artist__f_city__city_name__contains=txt) | Q(f_museum__f_city__city_name__contains=txt) |
+                                                        Q(f_museum__museum_title__contains=txt)).order_by('rating')
+                order_status_rating = 1
+            #With default Order
+            else:
+               paint_objects = Painting.objects.filter(Q(title__contains = txt) | Q(description__contains = txt) |
+                                                       Q(f_artist__artist_name__contains = txt) | Q(f_genre__genre_title__contains = txt) |
+                                                       Q(f_period__period_title__contains = txt) | Q(f_museum__museum_title__contains = txt) |
+                                                       Q(f_artist__f_city__city_name__contains = txt) | Q(f_museum__f_city__city_name__contains = txt) |
+                                                       Q(f_museum__museum_title__contains = txt)).order_by('-published_date')
+
+    #If any item of "var_dict"(variables dictionary) has id number, e.g. artist_id = 1
+    #Filtered paintings by "artist_id", "genre_id" etc. (by foreign_id_dict(foreign id dictionary) )
+    else:
+        for f_key, f_value in foreign_id_dict.items():
+            #Checking if each value has id, e.g. artist_id = 1
+            if f_value != False:
+                # Order Status "Date" - Descending
+                if order_status_date == 1:
+                    #Example: f_key:f_value --> f_artist:artist_id
+                    paint_objects = Painting.objects.filter( **{f_key:f_value} ).order_by('-published_date')
+                    order_status_date = 0
+                #Order Status "Date" - Ascending
+                elif order_status_date == 0:
+                     #Example: f_key:f_value --> f_artist:artist_id
+                     paint_objects = Painting.objects.filter( **{f_key:f_value} ).order_by('published_date')
+                     order_status_date = 1
+                #Order Status "Popularity" - Descending
+                elif order_status_popularity == 1:
+                    #Example: f_key:f_value --> f_artist:artist_id
+                    paint_objects = Painting.objects.filter( **{f_key:f_value} ).order_by('-counter_popularity')
+                    order_status_popularity = 0
+                #Order Status "Popularity" - Ascending
+                elif order_status_popularity == 0:
+                    #Example: f_key:f_value --> f_artist:artist_id
+                    paint_objects = Painting.objects.filter( **{f_key:f_value} ).order_by('counter_popularity')
+                    order_status_popularity = 1
+                #Order Status "Rating" - Descending
+                elif order_status_rating == 1:
+                    #Example: f_key:f_value --> f_artist:artist_id
+                    paint_objects = Painting.objects.filter( **{f_key:f_value} ).order_by('-rating')
+                    order_status_rating = 0
+                #Order Status "Rating" - Ascending
+                elif order_status_rating == 0:
+                    #Example: f_key:f_value --> f_artist:artist_id
+                    paint_objects = Painting.objects.filter( **{f_key:f_value} ).order_by('rating')
+                    order_status_rating = 1
+                #With default Order
+                else:
+                    #Example: f_key:f_value --> f_artist:artist_id
+                    paint_objects = Painting.objects.filter( **{f_key:f_value} ).order_by('title')
+
+
+########################################################################################################################
+#################### DISTINCT OBJECTS ####################
+
+    #Artists distinct
     artists_distinct = Artist.objects.all().distinct().order_by('artist_name')
 
     #Genres distinct
@@ -101,41 +255,31 @@ def gallery(request, null=None):
 
     return render(request, 'expo/gallery.html', locals())
 
+#######################################################################################################################
+
+
+
 ########################################################################################################################
+############## Painting detail ##########################
 
 def painting_detail(request, pk):
     paint_object = get_object_or_404(Painting, pk=pk)
+    paint_object.counter_popularity = paint_object.counter_popularity + 1
+    paint_object.save()
     return render(request, 'expo/painting_detail.html', {'paint_object': paint_object})
 
 ########################################################################################################################
+############## Index ######################
 
 def index(request):
     return render(request, 'expo/index.html', {})
 
 ########################################################################################################################
+###################### Contact #######################
 
 def contact(request):
     return render(request, 'expo/contact.html', {})
 
-########################################################################################################################
-
-def museums(request):
-    uk_museums = Museum.objects.filter(f_city__f_country__country_name__contains="United Kingdom")
-    london_museums = Museum.objects.filter(f_city__city_name__contains="London")
-    return render(request, 'expo/museums.html', locals())
-
-########################################################################################################################
-
-def cities(request):
-    greek_cities = City.objects.filter(f_country__country_name__contains="Greece")
-    return render(request, 'expo/cities.html', locals())
-
-########################################################################################################################
-'''
-def annotate_genres(request):
-    genres_annotate = Genre.objects.annotate(number_of_entries=Count('painting'))
-    return render(request, 'expo/annotate_genres.html', locals())
-'''
 ########################################################################################################################
 
 

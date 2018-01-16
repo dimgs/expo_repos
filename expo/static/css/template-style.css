@@ -20,7 +20,9 @@ nav {
 	width: 100%;
 }
 .top-nav a {
-	font-size: 0.9em;
+    font-family: 'Arbutus Slab', serif;
+	font-size: 15px;
+	font-;
 	/*text-transform: uppercase;*/
 }
 .top-nav .logo a, .top-nav .logo.active-item a {
@@ -154,10 +156,18 @@ a.button {
 
 
 #head {
+
 	background: none repeat scroll 0 0 rgba(0, 30, 34, 0.85);
 	padding: 7em 0;
 	text-align: center;
 }
+
+#head h1 {
+    font-family: 'Calligraffitti', cursive;
+	font-size: 45px;
+	font-weight: bold;
+}
+
 #content {
 	background: none repeat scroll 0 0 #fff;
 	padding: 5em 0;

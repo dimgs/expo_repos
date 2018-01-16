@@ -21,14 +21,23 @@
       <link rel="stylesheet" href="{% static 'owl-carousel/owl.theme.css' %}">
       <!-- CUSTOM STYLE -->
       <link rel="stylesheet" href="{% static 'css/template-style.css' %}">
-      <link href="https://fonts.googleapis.com/css?family=Cherry+Swash" rel="stylesheet" type="text/css">
+
+      <!-- Art Logo -->
+      <link href="https://fonts.googleapis.com/css?family=Euphoria+Script" rel="stylesheet">
+      <!-- #head Title -->
+      <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
+      <!--  Main Menu (Home - Gallery - Contact) - ".top-nav a" - "template-style.css" -->
+      <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab" rel="stylesheet">
+      <!-- Paintings' Titles - ".col-md-4 h1" - "gallery-style.css" -->
+      <link href="https://fonts.googleapis.com/css?family=Cherry+Swash:700" rel="stylesheet">
+
 
 
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> <!-- BOOTSTRAP FOR STARS -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 
 
 
@@ -50,23 +59,25 @@
             <div class="line">
                <div class="top-nav">
                   <div class="logo hide-l">
-                        <a href="{% url 'gallery' %}"><strong>Gallery</strong></a>
+                        <a href="{% url 'gallery' %}">Gallery</a>
                   </div>
                   <p class="nav-text">Menu</p>
                    <div class="top-nav s-12 l-5">
                        <ul class="right top-ul chevron">
-                            <li><a href="{% url 'index' %}">Home</a>
-                            </li>
+                           <li>
+                               <a href="{% url 'index' %}">Home</a>
+                           </li>
                        </ul>
                    </div>
                    <ul class="s-12 l-2">
                      <li class="logo hide-s hide-m">
-                        <a href="{% url 'gallery' %}"><strong>Gallery</strong></a>
+                         <a href="{% url 'gallery' %}">Gallery</a>
                      </li>
                   </ul>
                   <div class="top-nav s-12 l-5">
                      <ul class="top-ul chevron">
-                        <li><a href="{% url 'contact' %}">Contact</a>
+                        <li>
+                            <a href="{% url 'contact' %}">Contact</a>
                         </li>
                      </ul>
                   </div>

@@ -3,32 +3,146 @@
 
 {% block main_part %}
 
+<section>
     <div id="head">
         <div class="line">
             <h1 style="color: white">Hall of Fame</h1>
+            <div class="gallery-art-logo">
+                <h2>ART</h2>
+            </div>
         </div>
     </div>
 
 
-    <!-- WHOLE CONTENT -->
+    <!-- Whole content -->
     <div class="gallery-whole-content">
-        <!-- LEFT SIDEBAR -->
+        <!-- Left sidebar -->
         <div class="gallery-left-sidebar">
 
-            <!-- SEARCH FIELD -->
+            <!-- Search Field -->
             <form class="form-inline" type="get" action=".">
                 <input type="search" name="txt" value="">
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Search</button>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
             </form>
+
+            <!-- Ascending / Descending Sorting -->
+            <div class="gallery-order">
+                <span><p>Sort by: </p>
+
+                    <!-- Sorting for the Search Field with some text -->
+                    {% if txt != '' %}
+                        <!-- Sorting by "Date" -->
+                        {% if order_status_date == 1 %}
+                            <a href="{% url 'gallery' %}?order_status_date={{ order_status_date }}&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Date <span class="glyphicon glyphicon-arrow-up"></span></button></a>
+                        {% elif order_status_date == 0 %}
+                            <a href="{% url 'gallery' %}?order_status_date={{ order_status_date }}&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Date <span class="glyphicon glyphicon-arrow-down"></span></button></a>
+                        {% else %}
+                            <a href="{% url 'gallery' %}?order_status_date=1&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Date</button></a>
+                        {% endif %}
+
+                        <!-- Sorting by "Popularity" -->
+                        {% if order_status_popularity == 1 %}
+                            <a href="{% url 'gallery' %}?order_status_popularity={{ order_status_popularity }}&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Popular <span class="glyphicon glyphicon-arrow-up"></span></button></a>
+                        {% elif order_status_popularity == 0 %}
+                            <a href="{% url 'gallery' %}?order_status_popularity={{ order_status_popularity }}&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Popular <span class="glyphicon glyphicon-arrow-down"></span></button></a>
+                        {% else %}
+                            <a href="{% url 'gallery' %}?order_status_popularity=1&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Popular</button></a>
+                        {% endif %}
+
+
+                        <!-- Sorting by "Rating" -->
+                        {% if order_status_rating == 1 %}
+                            <a href="{% url 'gallery' %}?order_status_rating={{ order_status_rating }}&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Top Rated <span class="glyphicon glyphicon-arrow-up"></span></button></a>
+                        {% elif order_status_rating == 0 %}
+                            <a href="{% url 'gallery' %}?order_status_rating={{ order_status_rating }}&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Top Rated <span class="glyphicon glyphicon-arrow-down"></span></button></a>
+                        {% else %}
+                            <a href="{% url 'gallery' %}?order_status_rating=1&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Top Rated</button></a>
+                        {% endif %}
+
+                    {% endif %}
+
+
+
+                    <!-- Sorting for the "Main Page" - "gallery.html" -->
+                    {% if result_var_dict == False and txt == '' %}
+                        <!-- Sorting by "Date" -->
+                        {% if order_status_date == 1 %}
+                            <a href="{% url 'gallery' %}?order_status_date={{ order_status_date }}"><button type="button" class="btn btn-default btn-sm">Date <span class="glyphicon glyphicon-arrow-up"></span></button></a>
+                        {% elif order_status_date == 0 %}
+                            <a href="{% url 'gallery' %}?order_status_date={{ order_status_date }}"><button type="button" class="btn btn-default btn-sm">Date <span class="glyphicon glyphicon-arrow-down"></span></button></a>
+                        {% else %}
+                            <a href="{% url 'gallery' %}?order_status_date=1"><button type="button" class="btn btn-default btn-sm">Date</button></a>
+                        {% endif %}
+
+                        <!-- Sorting by "Popularity" -->
+                        {% if order_status_popularity == 1 %}
+                            <a href="{% url 'gallery' %}?order_status_popularity={{ order_status_popularity }}"><button type="button" class="btn btn-default btn-sm">Popular <span class="glyphicon glyphicon-arrow-up"></span></button></a>
+                        {% elif order_status_popularity == 0 %}
+                            <a href="{% url 'gallery' %}?order_status_popularity={{ order_status_popularity }}"><button type="button" class="btn btn-default btn-sm">Popular <span class="glyphicon glyphicon-arrow-down"></span></button></a>
+                        {% else %}
+                            <a href="{% url 'gallery' %}?order_status_popularity=1"><button type="button" class="btn btn-default btn-sm">Popular</button></a>
+                        {% endif %}
+
+                        <!-- Sorting by "Rating" -->
+                        {% if order_status_rating == 1 %}
+                            <a href="{% url 'gallery' %}?order_status_rating={{ order_status_rating }}"><button type="button" class="btn btn-default btn-sm">Top Rated <span class="glyphicon glyphicon-arrow-up"></span></button></a>
+                        {% elif order_status_rating == 0 %}
+                            <a href="{% url 'gallery' %}?order_status_rating={{ order_status_rating }}"><button type="button" class="btn btn-default btn-sm">Top Rated <span class="glyphicon glyphicon-arrow-down"></span></button></a>
+                        {% else %}
+                            <a href="{% url 'gallery' %}?order_status_rating=1"><button type="button" class="btn btn-default btn-sm">Top Rated</button></a>
+                        {% endif %}
+
+                    {% endif %}
+
+                    <!-- Sorting for "Filtered Pages" -->
+                    {% for key, value in var_dict.items %}
+                        {% if value != False %}
+
+                            <!-- Sorting by "Date" -->
+                            {% if order_status_date == 1 %}
+                                <a href="{% url 'gallery' %}?order_status_date={{ order_status_date }}&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Date <span class="glyphicon glyphicon-arrow-up"></span></button></a>
+                            {% elif order_status_date == 0 %}
+                                <a href="{% url 'gallery' %}?order_status_date={{ order_status_date }}&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Date <span class="glyphicon glyphicon-arrow-down"></span></button></a>
+                            {% else %}
+                                <a href="{% url 'gallery' %}?order_status_date=1&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Date</button></a>
+                            {% endif %}
+
+
+                            <!-- Sorting by "Popularity" -->
+                            {% if order_status_popularity == 1 %}
+                                <a href="{% url 'gallery' %}?order_status_popularity={{ order_status_popularity }}&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Popular <span class="glyphicon glyphicon-arrow-up"></span></button></a>
+                            {% elif order_status_popularity == 0 %}
+                                <a href="{% url 'gallery' %}?order_status_popularity={{ order_status_popularity }}&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Popular <span class="glyphicon glyphicon-arrow-down"></span></button></a>
+                            {% else %}
+                                <a href="{% url 'gallery' %}?order_status_popularity=1&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Popular</button></a>
+                            {% endif %}
+
+
+                            <!-- Sorting by "Rating" -->
+                            {% if order_status_rating == 1 %}
+                                <a href="{% url 'gallery' %}?order_status_rating={{ order_status_rating }}&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Top Rated <span class="glyphicon glyphicon-arrow-up"></span></button></a>
+                            {% elif order_status_rating == 0 %}
+                                <a href="{% url 'gallery' %}?order_status_rating={{ order_status_rating }}&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Top Rated <span class="glyphicon glyphicon-arrow-down"></span></button></a>
+                            {% else %}
+                                <a href="{% url 'gallery' %}?order_status_rating=1&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Top Rated</button></a>
+                            {% endif %}
+
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
+
 
             <!-- FILTERS MENU -->
             <div class="gallery-left-sidebar-filters">
 
+                <!-- Dropdown menu "Artists" -->
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Artists
                         <span class="caret"></span>
                     </button>
 
+                    <!-- Distinct "Artists" records -->
                     <ul class="dropdown-menu">
                         {% for artist in artists_distinct %}
                             <li><a href="{% url 'gallery' %}?artist_id={{ artist.pk }}">{{ artist.artist_name }}</a></li>
@@ -36,11 +150,13 @@
                     </ul>
                 </div>
 
+                <!-- Dropdown menu "Genres" -->
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Genres
                         <span class="caret"></span>
                     </button>
 
+                    <!-- Distinct "Genres" records -->
                     <ul class="dropdown-menu">
                         {% for genre in genres_distint %}
                             <li><a href="{% url 'gallery' %}?genre_id={{ genre.pk }}">{{ genre.genre_title }}</a></li>
@@ -48,11 +164,13 @@
                     </ul>
                 </div>
 
+                <!-- Dropdown menu "Periods" -->
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Periods
                         <span class="caret"></span>
                     </button>
 
+                    <!-- Distinct "Periods" records -->
                     <ul class="dropdown-menu">
                         {% for period in periods_distinct %}
                             <li><a href="{% url 'gallery' %}?period_id={{ period.pk }}">{{ period.period_title }}</a></li>
@@ -60,11 +178,13 @@
                     </ul>
                 </div>
 
+                <!-- Dropdown menu "Countries" -->
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Countries
                         <span class="caret"></span>
                     </button>
 
+                    <!-- Distinct "Countries" records -->
                     <ul class="dropdown-menu">
                         {% for country in countries_distinct %}
                             <li><a href="{% url 'gallery' %}?museum_country_id={{ country.pk }}">{{ country.country_name }}</a></li>
@@ -72,31 +192,20 @@
                     </ul>
                 </div>
 
+                <!-- Dropdown menu "Museums" -->
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Museums
                         <span class="caret"></span>
                     </button>
 
+                    <!-- Distinct "Museum" records -->
                     <ul class="dropdown-menu">
                         {% for museum in museums_distinct %}
                             <li><a href="{% url 'gallery' %}?museum_id={{ museum.pk }}">{{ museum.museum_title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
-            </div>
 
-            <!-- CHECKBOXES -->
-            <div class="gallery-checkbox-artist">
-                <h3>Artists</h3>
-                <div class="gallery-checkboxes-items"
-                    <form class="form-inline" type="get" action=".">
-                        {% for artist in artists_distinct %}
-                            <div class="checkbox">
-                                <label><input type="checkbox" name="checkbox_values" value="">{{ artist.artist_name }}</label>
-                            </div>
-                        {% endfor %} </div>
-                        <button type="submit" class="btn btn-default">Go</button>
-                    </form>
             </div>
 
         </div>
@@ -109,10 +218,20 @@
                     {% if paint_objects %}
                         {% for paint in paint_objects %}
                             {% if paint.art_image %}
-                                <div class="col-md-4">
-                                    <a href="{% url 'painting_detail' pk=paint.pk %}"><h1 class="img-rounded">{{ paint.title }}</h1></a>
-                                    <a href="{% url 'painting_detail' pk=paint.pk %}"><img class="img-rounded" src="{{ paint.art_image.url }}" alt="{{ paint.title }}" /></a>
-                                    <p class="img-rounded">{{ paint.description }}</p>
+                                <div class="col-md-4"> <!-- "gallery-style.css -->"
+                                    <a href="{% url 'painting_detail' pk=paint.pk %}"><h1>{{ paint.title }}</h1></a>
+                                        <div class="gallery-image-container">
+                                            <img src="{{ paint.art_image.url }}" alt="{{ paint.title }}" />
+                                            <a href="{% url 'painting_detail' pk=paint.pk %}">
+                                                <div class="overlay">
+                                                    <div class="centered-text"><h2>{{ paint.f_artist }}</h2>
+                                                                               <h3>{{ paint.created_date.year }}</h3>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    <p class="img-rounded">Rating: {{ paint.rating }}/5 | Views: {{ paint.counter_popularity }}<br>
+                                                           Published date: {{ paint.published_date }} </p>
                                 </div>
                             {% endif %}
                         {% endfor %}
@@ -121,37 +240,8 @@
                     {% endif %}
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-        <!-- ----------------------------------- COMMENTS ------------------------------------------------
-             PAINTINGS (TEXT - no images - first version)
-            {% for paint in paint_objects %}
-                <div class="gallery-painting-text">
-                    <h1><a href="{% url 'painting_detail' pk=paint.pk %}">{{ paint.f_artist }}</a></h1>
-                    <h3>{{ paint.title }} (Year: {{ paint.created_date.year }})</h3>
-                    <p>{{ paint.description | linebreaksbr }}</p>
-                    <p>Genre: {{ paint.f_genre }}</p>
-                    <p>Museum: {{ paint.f_museum }}</p>
-                    <p>Period: {{ paint.f_period }}</p>
-
-                    <p>Artist's city: {{ paint.f_artist.f_city }}</p>
-                    <p>Artist's country: {{ paint.f_artist.f_city.f_country }}</p>
-
-                    <p>Museum's city: {{ paint.f_museum.f_city }}</p>
-                    <p>Museum's country: {{ paint.f_museum.f_city.f_country }}</p>
-                </div>
-            {% endfor %}
-         ----------------------------------------------------------------------------------------------------- -->
-
         </div>
     </div>
-
+</section>
 
 {% endblock %}

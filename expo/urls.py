@@ -11,9 +11,6 @@ urlpatterns = [
     url(r'^gallery/$', views.gallery, name='gallery'),
     url(r'^index/$', views.index, name='index'),
     url(r'^contact/$', views.contact, name='contact'),
-    url(r'^museums/$', views.museums, name='museums'),
-    url(r'^cities/$', views.cities, name='cities'),
-    #url(r'^annotate_genres/$', views.annotate_genres, name='annotate_genres'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
