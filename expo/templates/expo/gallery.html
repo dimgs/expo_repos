@@ -207,6 +207,116 @@
                 </div>
 
             </div>
+            <div class="gallery-complex-filters">
+                <form method="get" action=".">
+                        <div class="well">
+                            <h2>FILTERS</h2>
+                            <a href="."><p>Reset</p></a>
+                            <div class="form-group">
+                                <div class="complex-filters-input">
+                                    <h3>Title:
+                                        <label>
+                                            <p>{{ painting_filter.form.title }}</p>
+                                        </label>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h3>Artists:</h3>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        {% for choice in painting_filter.form.f_artist %}
+                                            <div class="checkbox">
+                                                <label>
+                                                    {{ choice.tag }} {{ choice.choice_label }}
+                                                </label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h3>Genres:</h3>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        {% for choice in painting_filter.form.f_genre %}
+                                            <div class="checkbox">
+                                                <label>
+                                                    {{ choice.tag }} {{ choice.choice_label }}
+                                                </label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h3>Periods:</h3>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        {% for choice in painting_filter.form.f_period %}
+                                            <div class="checkbox">
+                                                <label>
+                                                    {{ choice.tag }} {{ choice.choice_label }}
+                                                </label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h3>Countries:</h3>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        {% for choice in painting_filter.form.f_artist__f_city__f_country %}
+                                            <div class="checkbox">
+                                                <label>
+                                                    {{ choice.tag }} {{ choice.choice_label }}
+                                                </label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h3>Museums:</h3>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        {% for choice in painting_filter.form.f_museum %}
+                                            <div class="checkbox">
+                                                <label>
+                                                    {{ choice.tag }} {{ choice.choice_label }}
+                                                </label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h3>Rating:</h3>
+                                <div class="complex-filters-input">
+                                    <label>{{ painting_filter.form.rating }}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h3>Created year:</h3>
+                                <div class="complex-filters-input">
+                                    <label>{{ painting_filter.form.created_date }}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h3>Published date:</h3>
+                                <div class="complex-filters-input">
+                                    <label>{{ painting_filter.form.published_date }}</label>
+                                </div>
+                            </div>
+                            <input type="hidden" name="complex_filters_status" value="1">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-search"></span> Search
+                            </button>
+                            <a href="."><p>Reset</p></a>
+                        </div>
+                </form>
+            </div>
 
         </div>
 
