@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Count
 from django.db.models import Q
 from expo.models import *
+from .filters import PaintingFilter
 
 ########################################################################################################################
 ###################### Gallery ###########################
@@ -19,6 +19,7 @@ def gallery(request, null=None):
     order_status_date = request.GET.get('order_status_date', '')
     order_status_popularity = request.GET.get('order_status_popularity', '')
     order_status_rating = request.GET.get('order_status_rating', '')
+    complex_filters_status = request.GET.get('complex_filters_status', '')
 
     try:
         artist_id = int(artist_id)
@@ -253,6 +254,16 @@ def gallery(request, null=None):
     #Museums distinct
     museums_distinct = Museum.objects.all().distinct().order_by('museum_title')
 
+    ########## Painting Filter by "filters.py" ##########
+    painting_list = Painting.objects.all()
+    painting_filter = PaintingFilter(request.GET, queryset=painting_list)
+
+    ########## COMPLEX filters vs STANDARD filters #########
+    if complex_filters_status != '':
+        paint_objects = painting_filter.qs
+
+
+    ### Return ###
     return render(request, 'expo/gallery.html', locals())
 
 #######################################################################################################################
