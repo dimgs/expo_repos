@@ -425,14 +425,28 @@ div.col-lg-4 img {
 
 }
 
-div.col-lg-4 h1 {
+div.header-title h1 {
     font-family: 'Bree Serif', serif;
     display: block;
     background-color: darkgrey;
     color: #ffffff;
-    margin: 30px auto 30px auto;
+    margin: 30px auto 30px 40px;
     padding: 10px 0 10px 0;
-    width: 100%;
+    width: 90%;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
+div.header-description h1 {
+    font-family: 'Bree Serif', serif;
+    display: block;
+    background-color: darkgrey;
+    color: #ffffff;
+    margin: 30px 30px 30px auto;
+    padding: 10px 0 10px 0;
+    width: 90%;
     text-align: center;
     font-weight: bold;
     opacity: 0.8;
@@ -442,6 +456,8 @@ div.col-lg-4 h1 {
 div.information {
     border-radius: 10px;
     box-shadow: 10px 10px 10px lightslategrey;
+    margin: auto 20px auto 40px;
+    width: 90%;
 }
 
 div.information td{
