@@ -3,26 +3,21 @@ from django.utils import timezone
 from multiselectfield import MultiSelectField
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-
-
+# Period model
 class Period(models.Model):
     period_title = models.CharField(max_length=50, blank=False, null=False)
 
     def __str__(self):
         return self.period_title
 
-
-
-
+# Country model
 class Country(models.Model):
     country_name = models.CharField(max_length=100, blank=False, null=False)
 
     def __str__(self):
         return self.country_name
 
-
-
-
+# City model
 class City(models.Model):
     f_country = models.ForeignKey(Country, default='0', on_delete=models.CASCADE)
     city_name = models.CharField(max_length=100, blank=False, null=False)
@@ -30,9 +25,7 @@ class City(models.Model):
     def __str__(self):
         return self.city_name
 
-
-
-
+# Museum model
 class Museum(models.Model):
     f_city = models.ForeignKey(City, default='0', on_delete=models.CASCADE)
     museum_title = models.CharField(max_length=100, blank=False, null=False)
@@ -40,18 +33,14 @@ class Museum(models.Model):
     def __str__(self):
         return self.museum_title
 
-
-
-
+# Genre model
 class Genre(models.Model):
     genre_title = models.CharField(max_length=50, blank=False, null=False)
 
     def __str__(self):
         return self.genre_title
 
-
-
-
+# Artist model
 class Artist(models.Model):
     f_city = models.ForeignKey(City, default='0', on_delete=models.CASCADE)
     artist_name = models.CharField(max_length=100)
@@ -59,13 +48,13 @@ class Artist(models.Model):
     def __str__(self):
         return self.artist_name
 
-
-
+# STATUS_CHOICES
 STATUS_CHOICES=(
     ('online', 'On'),
     ('offline', 'Off')
 )
 
+# Painting model
 class Painting(models.Model):
     f_artist = models.ForeignKey(Artist, default='0', on_delete=models.CASCADE)
     f_genre = models.ForeignKey(Genre, default='0', on_delete=models.CASCADE)
@@ -87,9 +76,7 @@ class Painting(models.Model):
     def __str__(self):
         return self.title
 
-
-
-
+# Famous model / Multiselect Field
 class Famous(models.Model):
     FAMOUS_CHOICES = (
         ('Mona Lisa', 'Mona Lisa'),

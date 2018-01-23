@@ -29,13 +29,15 @@
 
             <!-- Ascending / Descending Sorting -->
             <div class="gallery-order">
-                <div class="">
+                <!-- if Complex Filters don't be used, show "Order Buttons" -->
+                {% if complex_filters_status != 0 %}
                     <div class="order-by-well">
                         <p>Sort by</p>
 
                         <div class="order-by-buttons">
                             <!-- Sorting for the Search Field with some text -->
                             {% if txt != '' %}
+
                                 <!-- Sorting by "Date" -->
                                 {% if order_status_date == 1 %}
                                     <a href="{% url 'gallery' %}?order_status_date={{ order_status_date }}&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Date <span class="glyphicon glyphicon-arrow-up"></span></button></a>
@@ -54,7 +56,6 @@
                                     <a href="{% url 'gallery' %}?order_status_popularity=1&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Popular</button></a>
                                 {% endif %}
 
-
                                 <!-- Sorting by "Rating" -->
                                 {% if order_status_rating == 1 %}
                                     <a href="{% url 'gallery' %}?order_status_rating={{ order_status_rating }}&txt={{ txt }}"><button type="button" class="btn btn-default btn-sm">Rating<span class="glyphicon glyphicon-arrow-up"></span></button></a>
@@ -67,9 +68,9 @@
                             {% endif %}
 
 
-
-                            <!-- Sorting for the "Main Page" - "gallery.html" -->
+                            <!-- Sorting for the "Main Page" (without filtered data)- "gallery.html" -->
                             {% if result_var_dict == False and txt == '' %}
+
                                 <!-- Sorting by "Date" -->
                                 {% if order_status_date == 1 %}
                                     <a href="{% url 'gallery' %}?order_status_date={{ order_status_date }}"><button type="button" class="btn btn-default btn-sm">Date <span class="glyphicon glyphicon-arrow-up"></span></button></a>
@@ -99,7 +100,7 @@
 
                             {% endif %}
 
-                            <!-- Sorting for "Filtered Pages" -->
+                            <!-- Sorting for "Standard Filtered Pages" -->
                             {% for key, value in var_dict.items %}
                                 {% if value != False %}
 
@@ -112,7 +113,6 @@
                                         <a href="{% url 'gallery' %}?order_status_date=1&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Date</button></a>
                                     {% endif %}
 
-
                                     <!-- Sorting by "Popularity" -->
                                     {% if order_status_popularity == 1 %}
                                         <a href="{% url 'gallery' %}?order_status_popularity={{ order_status_popularity }}&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Popular <span class="glyphicon glyphicon-arrow-up"></span></button></a>
@@ -121,7 +121,6 @@
                                     {% else %}
                                         <a href="{% url 'gallery' %}?order_status_popularity=1&{{ key }}={{ value }}"><button type="button" class="btn btn-default btn-sm">Popular</button></a>
                                     {% endif %}
-
 
                                     <!-- Sorting by "Rating" -->
                                     {% if order_status_rating == 1 %}
@@ -136,11 +135,11 @@
                             {% endfor %}
                         </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
 
 
-            <!-- FILTERS MENU -->
+            <!-- STANDARD FILTERS -->
             <div class="gallery-left-sidebar-filters">
 
                 <!-- Dropdown menu "Artists" -->
@@ -148,7 +147,6 @@
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Artists
                         <span class="caret"></span>
                     </button>
-
                     <!-- Distinct "Artists" records -->
                     <ul class="dropdown-menu">
                         {% for artist in artists_distinct %}
@@ -162,7 +160,6 @@
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Genres
                         <span class="caret"></span>
                     </button>
-
                     <!-- Distinct "Genres" records -->
                     <ul class="dropdown-menu">
                         {% for genre in genres_distint %}
@@ -176,7 +173,6 @@
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Periods
                         <span class="caret"></span>
                     </button>
-
                     <!-- Distinct "Periods" records -->
                     <ul class="dropdown-menu">
                         {% for period in periods_distinct %}
@@ -190,7 +186,6 @@
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Countries
                         <span class="caret"></span>
                     </button>
-
                     <!-- Distinct "Countries" records -->
                     <ul class="dropdown-menu">
                         {% for country in countries_distinct %}
@@ -204,7 +199,6 @@
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Museums
                         <span class="caret"></span>
                     </button>
-
                     <!-- Distinct "Museum" records -->
                     <ul class="dropdown-menu">
                         {% for museum in museums_distinct %}
@@ -214,129 +208,154 @@
                 </div>
 
             </div>
+
+            <!-- COMPLEX FILTERS -->
             <div class="gallery-complex-filters">
+
                 <form method="get" action=".">
-                        <div class="">
-                            <h2>FILTERS</h2>
-                            <a href="."><p>Reset</p></a>
-                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Search</button>
-                            <div class="form-group">
-                                <h3>Title</h3>
-                                <div class="complex-filters-input">
-                                    <label>{{ painting_filter.form.title }}</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h3>Artists</h3>
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="panel-checkbox-body">
-                                            {% for choice in painting_filter.form.f_artist %}
-                                                <div class="checkbox">
-                                                    <label>
-                                                        {{ choice.tag }} {{ choice.choice_label.title }}
-                                                    </label>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h3>Genres</h3>
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="panel-checkbox-body">
-                                            {% for choice in painting_filter.form.f_genre %}
-                                                <div class="checkbox">
-                                                    <label>
-                                                        {{ choice.tag }} {{ choice.choice_label.title }}
-                                                    </label>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h3>Periods</h3>
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="panel-checkbox-body">
-                                            {% for choice in painting_filter.form.f_period %}
-                                                <div class="checkbox">
-                                                    <label>
-                                                        {{ choice.tag }} {{ choice.choice_label.title }}
-                                                    </label>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h3>Countries</h3>
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="panel-checkbox-body">
-                                            {% for choice in painting_filter.form.f_artist__f_city__f_country %}
-                                                <div class="checkbox">
-                                                    <label>
-                                                        {{ choice.tag }} {{ choice.choice_label.title }}
-                                                    </label>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h3>Museums</h3>
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="panel-checkbox-body">
-                                            {% for choice in painting_filter.form.f_museum %}
-                                                <div class="checkbox">
-                                                    <label>
-                                                        {{ choice.tag }} {{ choice.choice_label.title }}
-                                                    </label>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h3>Rating</h3>
-                                <div class="complex-filters-input">
-                                    <label>{{ painting_filter.form.rating_gte }}</label>
-                                     to
-                                    <label>{{ painting_filter.form.rating_lte }}</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h3>Year</h3>
-                                <div class="complex-filters-input-created-year">
-                                    <label>{{ painting_filter.form.created_year_gte }} to {{ painting_filter.form.created_year_lte }}</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h3>Published (YYYY-MM-DD)</h3>
-                                <div class="complex-filters-input">
-                                    <label>{{ painting_filter.form.published_date_gte }}</label>
-                                    to
-                                    <label>{{ painting_filter.form.published_date_lte }}</label>
-                                </div>
-                            </div>
-                            <input type="hidden" name="complex_filters_status" value="1">
-                            <button type="submit" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-search"></span> Search
-                            </button>
-                            <a href="."><p>Reset</p></a>
+
+                    <h2>FILTERS</h2>
+
+                    <a href="."><p>Reset</p></a>
+
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Search</button>
+
+                    <!-- Complex filters - "Title" -->
+                    <div class="form-group">
+                        <h3>Title</h3>
+                        <div class="complex-filters-input">
+                            <label>{{ painting_filter.form.title }}</label>
                         </div>
+                    </div>
+
+                    <!-- Complex filters - "Artists" -->
+                    <div class="form-group">
+                        <h3>Artists</h3>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel-checkbox-body">
+                                    {% for choice in painting_filter.form.f_artist %}
+                                        <div class="checkbox">
+                                            <label>
+                                                {{ choice.tag }} {{ choice.choice_label.title }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Complex filters - "Genres" -->
+                    <div class="form-group">
+                        <h3>Genres</h3>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel-checkbox-body">
+                                    {% for choice in painting_filter.form.f_genre %}
+                                        <div class="checkbox">
+                                            <label>
+                                                {{ choice.tag }} {{ choice.choice_label.title }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Complex filters - "Periods" -->
+                    <div class="form-group">
+                        <h3>Periods</h3>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel-checkbox-body">
+                                    {% for choice in painting_filter.form.f_period %}
+                                        <div class="checkbox">
+                                            <label>
+                                                {{ choice.tag }} {{ choice.choice_label.title }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Complex filters - "Countries" -->
+                    <div class="form-group">
+                        <h3>Countries</h3>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel-checkbox-body">
+                                    {% for choice in painting_filter.form.f_artist__f_city__f_country %}
+                                        <div class="checkbox">
+                                            <label>
+                                                {{ choice.tag }} {{ choice.choice_label.title }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Complex filters - "Museums" -->
+                    <div class="form-group">
+                        <h3>Museums</h3>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel-checkbox-body">
+                                    {% for choice in painting_filter.form.f_museum %}
+                                        <div class="checkbox">
+                                            <label>
+                                                {{ choice.tag }} {{ choice.choice_label.title }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Complex filters - "Rating" -->
+                    <div class="form-group">
+                        <h3>Rating</h3>
+                        <div class="complex-filters-input">
+                            <label>{{ painting_filter.form.rating_gte }}</label>
+                            to
+                            <label>{{ painting_filter.form.rating_lte }}</label>
+                        </div>
+                    </div>
+
+                    <!-- Complex filters - "Year" -->
+                    <div class="form-group">
+                        <h3>Year</h3>
+                        <div class="complex-filters-input-created-year">
+                            <label>{{ painting_filter.form.created_year_gte }} to {{ painting_filter.form.created_year_lte }}</label>
+                        </div>
+                    </div>
+
+                    <!-- Complex filters - "Published" -->
+                    <div class="form-group">
+                        <h3>Published <p style="display: inline">(yyyy-mm-dd)</p></h3>
+                        <div class="complex-filters-input">
+                            <label>{{ painting_filter.form.published_date_gte }}</label>
+                            to
+                            <label>{{ painting_filter.form.published_date_lte }}</label>
+                        </div>
+                    </div>
+
+                    <!-- Complex filters - complex_filters_ststus=1 when submit button is clicked -->
+                    <input type="hidden" name="complex_filters_status" value="1">
+                    <!-- Complex filters - "Submit button" -->
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-search"></span> Search
+                    </button>
+                    <a href="."><p>Reset</p></a>
+
                 </form>
             </div>
-
         </div>
 
 
@@ -347,7 +366,8 @@
                     {% if paint_objects %}
                         {% for paint in paint_objects %}
                             {% if paint.art_image %}
-                                <div class="col-md-4"> <!-- "gallery-style.css -->
+                                <!-- col-md-4 - "gallery-style.css -->
+                                <div class="col-md-4">
                                     <div class="thumbnail">
                                         <a href="{% url 'painting_detail' pk=paint.pk %}">
                                             <img src="{{ paint.art_image.url }}" alt="{{ paint.title }}">
@@ -360,6 +380,7 @@
 
                             {% endif %}
                         {% endfor %}
+
                     {% else %}
                         <h1 style="color:#000000; font-weight:bold; font-size: 3em; margin-top: 15%; margin-left: 40%">No results</h1>
                     {% endif %}

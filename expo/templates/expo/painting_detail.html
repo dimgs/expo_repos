@@ -12,60 +12,65 @@
     <div class="gallery-whole-content">
         <div class="container-fluid">
             <div class="row">
+
+                <!-- Thumbnail -->
                 <div class="col-lg-4">
                     {% if paint_object.art_image %}
                         <img class="img-thumbnail" src="{{ paint_object.art_image.url }}" />
                     {% endif %}
                 </div>
 
-                    <div class="col-lg-4">
-                        <div class="header-title">
-                            <h1 class="img-rounded">{{ paint_object.title.title }}</h1>
-                        </div>
-                        <div class="information">
-                            <table class="table table-striped">
-                               <tbody>
-                                    <tr>
-                                        <th>Year</th>
-                                        <td>{{ paint_object.created_year }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Artist</th>
-                                        <td><a href="{% url 'gallery' %}?artist_id={{ paint_object.f_artist.pk }}" >{{ paint_object.f_artist.artist_name.title }}</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Genre</th>
-                                        <td><a href="{% url 'gallery' %}?genre_id={{ paint_object.f_genre.pk }}" >{{ paint_object.f_genre.genre_title.title }}</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Period</th>
-                                        <td><a href="{% url 'gallery' %}?period_id={{ paint_object.f_period.pk }}" >{{ paint_object.f_period.period_title.title }}</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Country</th>
-                                        <td><a href="{% url 'gallery' %}?artist_country_id={{ paint_object.f_artist.f_city.f_country.pk }}" >{{ paint_object.f_artist.f_city.f_country.country_name.title }}</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Museum</th>
-                                        <td><a href="{% url 'gallery' %}?museum_id={{ paint_object.f_museum.pk }}" >{{ paint_object.f_museum.museum_title.title }}</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rating</th>
-                                        <td><span class="glyphicon glyphicon-star"></span> {{ paint_object.rating }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Views</th>
-                                        <td><span class="glyphicon glyphicon-eye-open"></span> {{ paint_object.counter_popularity }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Published</th>
-                                        <td>{{ paint_object.published_date }}</td>
-                                    </tr>
-                               </tbody>
-                           </table>
-                        </div>
+                <!-- Information & Description -->
+                <div class="col-lg-4">
+
+                    <!-- Information -->
+                    <div class="header-title">
+                        <h1 class="img-rounded">{{ paint_object.title.title }}</h1>
+                    </div>
+                    <div class="information">
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Year</th>
+                                <td>{{ paint_object.created_year }}</td>
+                            </tr>
+                            <tr>
+                                <th>Artist</th>
+                                <td><a href="{% url 'gallery' %}?artist_id={{ paint_object.f_artist.pk }}" >{{ paint_object.f_artist.artist_name.title }}</a></td>
+                            </tr>
+                            <tr>
+                                <th>Genre</th>
+                                <td><a href="{% url 'gallery' %}?genre_id={{ paint_object.f_genre.pk }}" >{{ paint_object.f_genre.genre_title.title }}</a></td>
+                            </tr>
+                            <tr>
+                                <th>Period</th>
+                                <td><a href="{% url 'gallery' %}?period_id={{ paint_object.f_period.pk }}" >{{ paint_object.f_period.period_title.title }}</a></td>
+                            </tr>
+                            <tr>
+                                <th>Country</th>
+                                <td><a href="{% url 'gallery' %}?artist_country_id={{ paint_object.f_artist.f_city.f_country.pk }}" >{{ paint_object.f_artist.f_city.f_country.country_name.title }}</a></td>
+                            </tr>
+                            <tr>
+                                <th>Museum</th>
+                                <td><a href="{% url 'gallery' %}?museum_id={{ paint_object.f_museum.pk }}" >{{ paint_object.f_museum.museum_title.title }}</a></td>
+                            </tr>
+                            <tr>
+                                <th>Rating</th>
+                                <td><span class="glyphicon glyphicon-star"></span> {{ paint_object.rating }}</td>
+                            </tr>
+                            <tr>
+                                <th>Views</th>
+                                <td><span class="glyphicon glyphicon-eye-open"></span> {{ paint_object.counter_popularity }}</td>
+                            </tr>
+                            <tr>
+                                <th>Published</th>
+                                <td>{{ paint_object.published_date }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
 
+                    <!-- Description -->
                     <div class="col-lg-4">
                         <div class="header-description">
                             <h1 class="img-rounded">Description</h1>
@@ -80,6 +85,8 @@
                             </div>
                         </div>
                     </div>
+
+                </div>
             </div>
         </div>
     </div>

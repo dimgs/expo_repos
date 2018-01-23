@@ -1,8 +1,8 @@
 from django import forms
 from .models import *
 import django_filters
-from django.core.validators import MinValueValidator, MaxValueValidator
 
+# RATING_CHOICES
 class PaintingFilter(django_filters.FilterSet):
     RATING_CHOICES = (
         (1, '1'),
@@ -12,7 +12,7 @@ class PaintingFilter(django_filters.FilterSet):
         (5, '5'),
     )
 
-    title = django_filters.CharFilter(lookup_expr='contains')
+    title = django_filters.CharFilter(lookup_expr='icontains')
     f_artist = django_filters.ModelMultipleChoiceFilter(queryset=Artist.objects.all().order_by('artist_name'), widget=forms.CheckboxSelectMultiple)
     f_genre = django_filters.ModelMultipleChoiceFilter(queryset=Genre.objects.all().order_by('genre_title'), widget=forms.CheckboxSelectMultiple)
     f_period = django_filters.ModelMultipleChoiceFilter(queryset=Period.objects.all().order_by('period_title'), widget=forms.CheckboxSelectMultiple)
@@ -24,6 +24,7 @@ class PaintingFilter(django_filters.FilterSet):
     created_year_lte = django_filters.NumberFilter(name='created_year', lookup_expr='lte')
     published_date_gte = django_filters.DateFilter(name='published_date', lookup_expr='gte')
     published_date_lte = django_filters.DateFilter(name='published_date', lookup_expr='lte')
+
 
     class Meta:
         model = Painting
