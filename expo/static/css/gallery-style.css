@@ -22,7 +22,7 @@ div.gallery-main-menu a {
     /* background-color: #ffffff; */
     /* background-color: #f0f0f0; */
     background-image: url('../img/background-image.png');
-    min-height: 160em;
+    min-height: 200em;
 
 }
 
@@ -256,7 +256,7 @@ div.thumbnail a:hover {
     text-decoration: none;
 }
 
-div.col-md-4 img {
+div.thumbnail img {
     border-radius: 5px;
     width: 100%;
     height: 280px;
@@ -265,7 +265,7 @@ div.col-md-4 img {
 
 }
 
-div.col-md-4 img:hover {
+div.thumbnail img:hover {
     opacity: 0.8;
     filter: alpha(opacity=80);
     transition: .5s ease;
