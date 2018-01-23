@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from multiselectfield import MultiSelectField
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 
@@ -59,6 +61,10 @@ class Artist(models.Model):
 
 
 
+STATUS_CHOICES=(
+    ('online', 'On'),
+    ('offline', 'Off')
+)
 
 class Painting(models.Model):
     f_artist = models.ForeignKey(Artist, default='0', on_delete=models.CASCADE)
@@ -67,11 +73,12 @@ class Painting(models.Model):
     f_museum = models.ForeignKey(Museum, default='0', on_delete=models.CASCADE)
     title = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(blank=True, null=True)
-    rating = models.IntegerField(blank=True, null=True)
+    rating = models.PositiveIntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)], blank=True, null=True)
     art_image = models.ImageField(blank=True, null=True)
-    created_date = models.DateField(blank=True, null=True)
+    created_year = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(2018)], blank=True, null=True)
     published_date = models.DateTimeField(blank=True, null=True)
-    counter_popularity = models.IntegerField(default=0, blank=True, null=True)
+    counter_popularity = models.PositiveIntegerField(default=0, blank=True, null=True)
+    status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='on')
 
     def publish(self):
         self.published_date = timezone.now()
@@ -80,5 +87,15 @@ class Painting(models.Model):
     def __str__(self):
         return self.title
 
-#*********************************************************************************
 
+
+
+class Famous(models.Model):
+    FAMOUS_CHOICES = (
+        ('Mona Lisa', 'Mona Lisa'),
+        ('Starry Night', 'Starry Night'),
+        ('The Last Supper', 'The Last Supper'),
+        ('The Creation of Adam', 'The Creation of Adam'),
+        ('Guernica', 'Guernica'),
+    )
+    title = MultiSelectField(choices=FAMOUS_CHOICES)

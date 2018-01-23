@@ -12,36 +12,70 @@
     <div class="gallery-whole-content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-4">
                     {% if paint_object.art_image %}
-                        <img src="{{ paint_object.art_image.url }}" />
+                        <img class="img-thumbnail" src="{{ paint_object.art_image.url }}" />
                     {% endif %}
                 </div>
 
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <h1 class="img-rounded">{{ paint_object.title }}</h1>
-
-                        <p><button type="button" class="btn btn-primary btn-lg">Year</button> <button type="button" class="btn btn-primary btn-lg">{{ paint_object.created_date.year }}</button>
-
-                        </p>
-                        <p><button type="button" class="btn btn-primary btn-lg">Artist</button> <a href="{% url 'gallery' %}?artist_id={{ paint_object.f_artist.pk }}" ><button type="button" class="btn btn-warning btn-lg">{{ paint_object.f_artist }}</button></a></p>
-                        <p><button type="button" class="btn btn-primary btn-lg">Genre</button> <a href="{% url 'gallery' %}?genre_id={{ paint_object.f_genre.pk }}" ><button type="button" class="btn btn-danger btn-lg">{{ paint_object.f_genre }}</button></a></p>
-                        <p><button type="button" class="btn btn-primary btn-lg">Museum</button> <a href="{% url 'gallery' %}?museum_id={{ paint_object.f_museum.pk }}" ><button type="button" class="btn btn-success btn-lg">{{ paint_object.f_museum }}</button></a></p>
-                        <p><a href="{% url 'gallery' %}?period_id={{ paint_object.f_period.pk }}" > <button type="button" class="btn btn-primary btn-lg">Period</button> <a href="{% url 'gallery' %}?period_id={{ paint_object.f_period.pk }}" ><button type="button" class="btn btn-primary btn-lg">{{ paint_object.f_period }}</button></a></p>
-
-                        <p><button type="button" class="btn btn-primary btn-lg">Artist's city</button> <a href="{% url 'gallery' %}?artist_city_id={{ paint_object.f_artist.f_city.pk }}" ><button type="button" class="btn btn-warning btn-lg">{{ paint_object.f_artist.f_city }}</button></a></p>
-                        <p><a href="{% url 'gallery' %}?artist_country_id={{ paint_object.f_artist.f_city.f_country.pk }}" > <button type="button" class="btn btn-primary btn-lg">Artist's country</button> <a href="{% url 'gallery' %}?artist_country_id={{ paint_object.f_artist.f_city.f_country.pk }}" ><button type="button" class="btn btn-danger btn-lg">{{ paint_object.f_artist.f_city.f_country }}</button></a></p>
-
-                        <p><a href="{% url 'gallery' %}?museum_city_id={{ paint_object.f_museum.f_city.pk }}" > <button type="button" class="btn btn-primary btn-lg">Museum's city</button> <a href="{% url 'gallery' %}?museum_city_id={{ paint_object.f_museum.f_city.pk }}" ><button type="button" class="btn btn-success btn-lg">{{ paint_object.f_museum.f_city }}</button></a></p>
-                        <p><a href="{% url 'gallery' %}?museum_country_id={{ paint_object.f_museum.f_city.f_country.pk }}"> <button type="button" class="btn btn-primary btn-lg">Museum's country</button> <a href="{% url 'gallery' %}?museum_country_id={{ paint_object.f_museum.f_city.f_country.pk }}"><button type="button" class="btn btn-primary btn-lg">{{ paint_object.f_museum.f_city.f_country }}</button></a></p>
+                    <div class="col-lg-4">
+                        <h1 class="img-rounded">{{ paint_object.title.title }}</h1>
+                        <div class="information">
+                            <table class="table table-striped">
+                               <tbody>
+                                    <tr>
+                                        <th>Year</th>
+                                        <td>{{ paint_object.created_year }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Artist</th>
+                                        <td><a href="{% url 'gallery' %}?artist_id={{ paint_object.f_artist.pk }}" >{{ paint_object.f_artist.artist_name.title }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Genre</th>
+                                        <td><a href="{% url 'gallery' %}?genre_id={{ paint_object.f_genre.pk }}" >{{ paint_object.f_genre.genre_title.title }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Period</th>
+                                        <td><a href="{% url 'gallery' %}?period_id={{ paint_object.f_period.pk }}" >{{ paint_object.f_period.period_title.title }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Country</th>
+                                        <td><a href="{% url 'gallery' %}?artist_country_id={{ paint_object.f_artist.f_city.f_country.pk }}" >{{ paint_object.f_artist.f_city.f_country.country_name.title }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Museum</th>
+                                        <td><a href="{% url 'gallery' %}?museum_id={{ paint_object.f_museum.pk }}" >{{ paint_object.f_museum.museum_title.title }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rating</th>
+                                        <td><span class="glyphicon glyphicon-star"></span> {{ paint_object.rating }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Views</th>
+                                        <td><span class="glyphicon glyphicon-eye-open"></span> {{ paint_object.counter_popularity }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Published</th>
+                                        <td>{{ paint_object.published_date }}</td>
+                                    </tr>
+                               </tbody>
+                           </table>
+                        </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-lg-4">
                         <h1 class="img-rounded">Description</h1>
-                        <textarea class="img-rounded" readonly>{{ paint_object.description }}</textarea>
+                        <div class="panel-description">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="panel-description-body">
+                                        <label>{{ paint_object.description }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>

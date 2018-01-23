@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75159800-5735-4462-a72f-8f9bbe1917b6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/expo/filters.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/expo/migrations/0013_famouspaintings.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/expo/migrations/0014_auto_20180122_2012.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/expo/migrations/0015_auto_20180122_2015.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/expo/migrations/0016_painting_status.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/expo/migrations/0017_auto_20180123_0208.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/art_gallery_site/settings.py" afterPath="$PROJECT_DIR$/art_gallery_site/settings.py" />
+      <change beforePath="$PROJECT_DIR$/expo/admin.py" afterPath="$PROJECT_DIR$/expo/admin.py" />
+      <change beforePath="$PROJECT_DIR$/expo/filters.py" afterPath="$PROJECT_DIR$/expo/filters.py" />
+      <change beforePath="$PROJECT_DIR$/expo/models.py" afterPath="$PROJECT_DIR$/expo/models.py" />
       <change beforePath="$PROJECT_DIR$/expo/static/css/gallery-style.css" afterPath="$PROJECT_DIR$/expo/static/css/gallery-style.css" />
+      <change beforePath="$PROJECT_DIR$/expo/templates/expo/base.html" afterPath="$PROJECT_DIR$/expo/templates/expo/base.html" />
       <change beforePath="$PROJECT_DIR$/expo/templates/expo/gallery.html" afterPath="$PROJECT_DIR$/expo/templates/expo/gallery.html" />
-      <change beforePath="$PROJECT_DIR$/expo/views.py" afterPath="$PROJECT_DIR$/expo/views.py" />
+      <change beforePath="$PROJECT_DIR$/expo/templates/expo/painting_detail.html" afterPath="$PROJECT_DIR$/expo/templates/expo/painting_detail.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,60 +41,30 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.767624">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file leaf-file-name="filters.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/expo/filters.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="231">
-                  <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-                  <folding>
-                    <element signature="e#0#24#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/expo/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="8514">
-                  <caret line="261" column="34" lean-forward="false" selection-start-line="261" selection-start-column="34" selection-end-line="261" selection-end-column="34" />
-                  <folding>
-                    <element signature="e#0#54#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="gallery-style.css" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/expo/static/css/gallery-style.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="127">
-                  <caret line="161" column="17" lean-forward="false" selection-start-line="161" selection-start-column="17" selection-end-line="161" selection-end-column="17" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file leaf-file-name="gallery.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/expo/templates/expo/gallery.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="33">
-                  <caret line="215" column="65" lean-forward="false" selection-start-line="215" selection-start-column="65" selection-end-line="215" selection-end-column="65" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="gallery.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/expo/templates/expo/gallery.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-148">
+              <caret line="222" column="52" lean-forward="true" selection-start-line="222" selection-start-column="52" selection-end-line="222" selection-end-column="52" />
+              <folding>
+                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/expo/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5843">
+              <caret line="76" column="41" lean-forward="true" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -96,18 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.contact-page</find>
-      <find>#content</find>
-      <find>genre_ID</find>
-      <find>ID</find>
-      <find>idj</find>
-      <find>order_status</find>
-      <find>order_st</find>
-      <find>counter</find>
-      <find>sti</find>
-      <find>line</find>
-      <find>head</find>
-      <find>.line</find>
       <find>body</find>
       <find>#head</find>
       <find>top</find>
@@ -118,7 +85,6 @@
       <find>top-ul</find>
       <find>top-nav</find>
       <find>col</find>
-      <find>col-md</find>
       <find>sideb</find>
       <find>drop</find>
       <find>radius</find>
@@ -126,6 +92,19 @@
       <find>rad</find>
       <find>stick</find>
       <find>form</find>
+      <find>img</find>
+      <find>caption</find>
+      <find>col-md</find>
+      <find>:</find>
+      <find>search</find>
+      <find>shad</find>
+      <find>cente</find>
+      <find>center</find>
+      <find>panel-body</find>
+      <find>hover</find>
+      <find>crea</find>
+      <find>created</find>
+      <find>creat</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -135,6 +114,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/expo/static/css/gallery-style.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/expo/views.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
@@ -150,22 +130,22 @@
         <option value="$PROJECT_DIR$/expo/templates/expo/cities.html" />
         <option value="$PROJECT_DIR$/expo/templates/expo/annotate_genres.html" />
         <option value="$PROJECT_DIR$/expo/templates/expo/upload_image_form.html" />
-        <option value="$PROJECT_DIR$/art_gallery_site/settings.py" />
-        <option value="$PROJECT_DIR$/expo/admin.py" />
         <option value="$PROJECT_DIR$/expo/templates/expo/test.html" />
         <option value="$PROJECT_DIR$/expo/urls.py" />
-        <option value="$PROJECT_DIR$/expo/templates/expo/painting_detail.html" />
-        <option value="$PROJECT_DIR$/expo/models.py" />
         <option value="$PROJECT_DIR$/expo/templates/expo/index.html" />
         <option value="$PROJECT_DIR$/expo/static/css/responsee.css" />
         <option value="$PROJECT_DIR$/expo/templates/expo/contact.html" />
         <option value="$PROJECT_DIR$/expo/static/css/template-style.css" />
-        <option value="$PROJECT_DIR$/expo/templates/expo/base.html" />
         <option value="$PROJECT_DIR$/expo/forms.py" />
-        <option value="$PROJECT_DIR$/expo/views.py" />
+        <option value="$PROJECT_DIR$/art_gallery_site/settings.py" />
+        <option value="$PROJECT_DIR$/expo/templates/expo/base.html" />
+        <option value="$PROJECT_DIR$/expo/models.py" />
+        <option value="$PROJECT_DIR$/expo/templates/expo/painting_detail.html" />
+        <option value="$PROJECT_DIR$/expo/admin.py" />
         <option value="$PROJECT_DIR$/expo/filters.py" />
-        <option value="$PROJECT_DIR$/expo/templates/expo/gallery.html" />
         <option value="$PROJECT_DIR$/expo/static/css/gallery-style.css" />
+        <option value="$PROJECT_DIR$/expo/templates/expo/gallery.html" />
+        <option value="$PROJECT_DIR$/expo/views.py" />
       </list>
     </option>
   </component>
@@ -175,7 +155,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="960" />
     <option name="y" value="34" />
     <option name="width" value="960" />
@@ -367,15 +347,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="34" width="960" height="1046" extended-state="4" />
+    <frame x="0" y="34" width="1920" height="1046" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@art_gallery_site" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4541231" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7199533" sideWeight="0.50208336" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329849" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2485482" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" x="1155" y="131" width="745" height="965" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1358885" sideWeight="0.91041666" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3809524" sideWeight="0.91041666" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34895834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -384,7 +366,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39953542" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@art_gallery_site" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.456446" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -566,24 +547,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/expo/templates/expo/upload_image_form.html" />
-    <entry file="file://$PROJECT_DIR$/art_gallery_site/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/expo/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/expo/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="74" lean-forward="false" selection-start-line="1" selection-start-column="74" selection-end-line="1" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -605,27 +572,6 @@
     <entry file="file://$PROJECT_DIR$/expo/templates/expo/annotate_genres.html" />
     <entry file="file://$PROJECT_DIR$/expo/templates/expo/museums.html" />
     <entry file="file://$PROJECT_DIR$/expo/templates/expo/test.html" />
-    <entry file="file://$PROJECT_DIR$/expo/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="73" column="22" lean-forward="false" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/expo/templates/expo/painting_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/expo/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/expo/templates/expo/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2673">
@@ -654,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/expo/templates/expo/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="30" column="71" lean-forward="false" selection-start-line="30" selection-start-column="71" selection-end-line="30" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/expo/templates/expo/contact.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -668,38 +607,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/expo/filters.py">
+    <entry file="file://$PROJECT_DIR$/expo/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="165">
+          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/art_gallery_site/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/expo/templates/expo/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="34" column="6" lean-forward="false" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/expo/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="77" column="96" lean-forward="false" selection-start-line="77" selection-start-column="96" selection-end-line="77" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/expo/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="49" column="75" lean-forward="false" selection-start-line="49" selection-start-column="71" selection-end-line="49" selection-end-column="75" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/expo/views.py">
+    <entry file="file://$PROJECT_DIR$/expo/templates/expo/painting_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8514">
-          <caret line="261" column="34" lean-forward="false" selection-start-line="261" selection-start-column="34" selection-end-line="261" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/expo/templates/expo/gallery.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="215" column="65" lean-forward="false" selection-start-line="215" selection-start-column="65" selection-end-line="215" selection-end-column="65" />
+        <state relative-caret-position="142">
+          <caret line="27" column="65" lean-forward="false" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/expo/static/css/gallery-style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="161" column="17" lean-forward="false" selection-start-line="161" selection-start-column="17" selection-end-line="161" selection-end-column="17" />
+        <state relative-caret-position="363">
+          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/expo/filters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="25" column="90" lean-forward="false" selection-start-line="25" selection-start-column="90" selection-end-line="25" selection-end-column="90" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/expo/templates/expo/gallery.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-148">
+          <caret line="222" column="52" lean-forward="true" selection-start-line="222" selection-start-column="52" selection-end-line="222" selection-end-column="52" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/expo/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5843">
+          <caret line="76" column="41" lean-forward="true" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
           <folding />
         </state>
       </provider>
