@@ -1,5 +1,4 @@
-/* gallery.html */
-
+/********** gallery.html **********/
 div.gallery-art-logo h2{
     font-family: 'Euphoria Script', cursive;
     color: #fcffd6;
@@ -7,28 +6,22 @@ div.gallery-art-logo h2{
     position: absolute;
     right: 20px;
     top: 220px;
-
 }
 
 div.gallery-main-menu a {
     font-size: 15px;
 }
 
-/* Whole content (box) formatting */
+/* Whole content */
 .gallery-whole-content{
-    /* border: solid red; */
     position: relative;
     color: #000000;
-    /* background-color: #ffffff; */
-    /* background-color: #f0f0f0; */
     background-image: url('../img/background-image.png');
     min-height: 200em;
-
 }
 
-/* Left sidebar (box) formatting */
+/* Left sidebar */
 .gallery-left-sidebar{
-    /* border: solid red; */
     font-family: 'Bree Serif', serif;
     position: absolute;
     border-radius: 10px;
@@ -90,9 +83,7 @@ div.order-by-buttons button {
     width: 84px;
 }
 
-
 div.gallery-left-sidebar-filters {
-    /* border: solid blue; */
     top: 20px;
     left: 20px;
     margin-top: 50px;
@@ -110,7 +101,6 @@ div.gallery-left-sidebar-filters button{
     text-align: left;
     font-size: 18px;
     box-shadow: 10px 10px 10px lightslategrey;
-
 }
 
 div.gallery-left-sidebar-filters ul {
@@ -128,7 +118,6 @@ div.gallery-complex-filters {
     margin-top: 60px;
     padding: 20px 50px 20px 50px;
 }
-
 
 div.gallery-complex-filters h2 {
     font-size: 22px;
@@ -185,7 +174,6 @@ div.panel {
     border-radius: 10px;
 }
 
-
 div.panel-checkbox-body {
     margin-top: 0;
     padding-top: 10px;
@@ -204,25 +192,15 @@ div.checkbox label {
     font-weight: normal;
 }
 
-
-
-
-/* ******************************************** */
-
-
-
-/* Main content (box) formatting */
+/* Main content formatting */
 .gallery-main-content {
-    /* border: solid blue; */
     position: static;
     margin-left: 300px;
     padding: 10px;
     max-width: 120em;
 }
 
-
 div.col-md-4 {
-    /*border: solid red;*/
     width: 30em;
     height: 370px;
     margin-top: 30px;
@@ -230,14 +208,7 @@ div.col-md-4 {
     margin-left: 50px;
 }
 
-/*
-div.gallery-image-container {
-    position: relative;
-}
-*/
-
 div.thumbnail {
-   /*border: solid green;*/
     background-color: whitesmoke;
     border-radius: 10px;
     width: 100%;
@@ -247,8 +218,6 @@ div.thumbnail {
     padding: 0;
     margin: 0;
     box-shadow: 8px 8px 8px lightslategrey;
-
-
 }
 
 div.thumbnail a:hover {
@@ -262,7 +231,6 @@ div.thumbnail img {
     height: 280px;
     max-height: 280px;
     box-shadow: 3px 3px 3px lightslategrey;
-
 }
 
 div.thumbnail img:hover {
@@ -272,7 +240,6 @@ div.thumbnail img:hover {
 }
 
 div.caption{
-    /*border: solid blue;*/
     margin: 0;
     padding: 0;
 }
@@ -287,132 +254,15 @@ div.caption p {
     color: black;
     font-size: 17px;
     margin: 0;
-
 }
 
 div.caption p:hover {
     color: dimgrey;
 }
 
-
-/*
-div.col-md-4 img {
-    display: block;
-    border-radius: 5px;
-    margin: auto;
-    width: 80%;
-    height: 300px;
-    max-height: 300px;
-    box-shadow: 8px 8px 8px lightslategrey;
-}
-
-div.col-md-4 p {
-    display: block;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    color: #000000;
-    width: 90%;
-    height: 3em;
-    font-size: 120%;
-    text-align: center;
-    margin: 10px auto auto auto;
-    padding: 4px;
-    box-shadow: 8px 8px 8px lightslategrey;
-
-}
-*/
-/*
-div.col-md-4 img:hover {
-    border: none;
-    box-shadow: 10px 10px 10px black;
-    opacity: 0.8;
-    filter: alpha(opacity=80);
-    color: black;
-}
-
-
-div.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50px;
-  right: 0;
-  height: 100%;
-  width: 80%;
-  opacity: 0;
-  transition: .9s ease;
-}
-
-
-div.caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding-top: 5px;
-    padding-left: 5px;
-    width: 100%;
-    height: 35px;
-    background-color: #000000;
-    color: #ffffff;
-}
-
-
-div.caption .label1 {
-    position: absolute;
-    left: 10px;
-    bottom: 0;
-}
-
-div.caption .label2 {
-    position: absolute;
-    right: 10px;
-    bottom: 0;
-}
-*/
-
-/*
-div.centered-text h2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  border-radius: 5px;
-  color: #000000;
-  font-weight: bold;
-  font-size: 20px;
-  padding: 7px;
-  background-color: ghostwhite;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-
-div.centered-text h3 {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  text-align: center;
-  border-radius: 5px;
-  color: #000000;
-  font-weight: bold;
-  font-size: 20px;
-  padding: 7px;
-  background-color: ghostwhite;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-*/
-/*
-.gallery-image-container:hover .overlay {
-  opacity: 1;
-}
-*/
-
-
-
-/* ********************************************************** */
+/***********************************/
 /* Painting_detail.html */
 div.col-lg-4 {
-    /*border: solid red;*/
     min-height: 50em;
 }
 
@@ -422,7 +272,6 @@ div.col-lg-4 img {
     height: 40em;
     border-radius: 10px;
     box-shadow: 10px 10px 10px lightslategrey;
-
 }
 
 div.header-title h1 {
@@ -464,9 +313,6 @@ div.information td{
     font-size: 17px;
 }
 
-
-
-
 div.panel-description-body {
     display: block;
     border-radius: 10px;
@@ -486,27 +332,3 @@ div.panel-description label {
     font-weight: normal;
     text-align: justify;
 }
-
-/*
-div.col-md-6 textarea {
-    display: block;
-    margin: 30px auto 30px auto;
-    width: 99%;
-    height: 29em;
-    color: #000000;
-    font-size: 17px;
-    opacity: 0.8;
-    filter: alpha(opacity=80);
-}
-*/
-
-
-
-
-/*
-div.col-md-6 button{
-    width: 49%;
-    text-align: left;
-}
-*/
-

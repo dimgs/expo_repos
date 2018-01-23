@@ -3,56 +3,50 @@
 <!DOCTYPE html>
 <html lang="en-US">
    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width" />
-      <title>Art Gallery</title>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width" />
+       <title>Art Gallery</title>
 
-
-
-
-
+       <!-------- CSS ------->
        <link rel="stylesheet" href="{% static 'css/gallery-style.css' %}">
+       <link rel="stylesheet" href="{% static 'css/components.css' %}">
+       <link rel="stylesheet" href="{% static 'css/responsee.css' %}">
+       <link rel="stylesheet" href="{% static 'owl-carousel/owl.carousel.css' %}">
+       <link rel="stylesheet" href="{% static 'owl-carousel/owl.theme.css' %}">
+
+       <!-- CUSTOM STYLE -->
+       <link rel="stylesheet" href="{% static 'css/template-style.css' %}">
+
+       <!-------- GOOGLE FONTS -------->
+       <!-- Art Logo -->
+       <link href="https://fonts.googleapis.com/css?family=Euphoria+Script" rel="stylesheet">
+       <!-- #head Title -->
+       <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
+       <!--  Main Menu (Home - Gallery - Contact) - ".top-nav a" - "template-style.css" -->
+       <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab" rel="stylesheet">
+       <!-- Left Sidebar (whole) - ".gallery-left-sidebar"  - "template-style.css" -->
+       <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+       <!-- Title of paintings(gallery.html) and Title of paintings(painting_detail.html) - "template-style.css" -->
+       <link href="https://fonts.googleapis.com/css?family=Cherry+Swash" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+
+       <!-------- BOOTSTRAP -------->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-
-      <link rel="stylesheet" href="{% static 'css/components.css' %}">
-      <link rel="stylesheet" href="{% static 'css/responsee.css' %}">
-      <link rel="stylesheet" href="{% static 'owl-carousel/owl.carousel.css' %}">
-      <link rel="stylesheet" href="{% static 'owl-carousel/owl.theme.css' %}">
-      <!-- CUSTOM STYLE -->
-      <link rel="stylesheet" href="{% static 'css/template-style.css' %}">
-
-      <!-- Art Logo -->
-      <link href="https://fonts.googleapis.com/css?family=Euphoria+Script" rel="stylesheet">
-      <!-- #head Title -->
-      <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
-      <!--  Main Menu (Home - Gallery - Contact) - ".top-nav a" - "template-style.css" -->
-      <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab" rel="stylesheet">
-      <!-- Left Sidebar (whole) - ".gallery-left-sidebar"  - "template-style.css" -->
-      <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-      <!-- Title of paintings(gallery.html) and Title of paintings(painting_detail.html) - "template-style.css" -->
-      <link href="https://fonts.googleapis.com/css?family=Cherry+Swash" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-
-
-
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-
-
-     <!--  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
-      <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/modernizr.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/responsee.js' %}"></script>
-      <!--[if lt IE 9]>
+       <!--  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
+       <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+       <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+       <script type="text/javascript" src="{% static 'js/modernizr.js' %}"></script>
+       <script type="text/javascript" src="{% static 'js/responsee.js' %}"></script>
+       <!--[if lt IE 9]>
 	      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+          <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
       <![endif]-->
    </head>
+
    <body class="size-1140">
       <!-- TOP NAV WITH LOGO -->
       <header>
@@ -88,17 +82,12 @@
       </header>
 
 
-
-
-      <!-- MAIN_PART -->
+      <!-- MAIN_PART block -->
       {% block main_part %}
       {% endblock %}
 
 
-
-
-
-   <!-- FOOTER -->
+      <!-- FOOTER -->
       <footer>
          <div class="line">
             <div class="s-12 l-6">
@@ -131,8 +120,6 @@
            });
          });
       </script>
-
-
    </body>
 </html>
 
