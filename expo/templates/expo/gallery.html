@@ -194,7 +194,7 @@
                     <!-- Distinct "Countries" records -->
                     <ul class="dropdown-menu">
                         {% for country in countries_distinct %}
-                            <li><a href="{% url 'gallery' %}?museum_country_id={{ country.pk }}">{{ country.country_name.title }}</a></li>
+                            <li><a href="{% url 'gallery' %}?artist_country_id={{ country.pk }}">{{ country.country_name.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
