@@ -20,10 +20,9 @@
                     {% endif %}
                 </div>
 
-                <!-- Information & Description -->
+                <!-- Information -->
                 <div class="col-lg-4">
 
-                    <!-- Information -->
                     <div class="header-title">
                         <h1 class="img-rounded">{{ paint_object.title.title }}</h1>
                     </div>
@@ -47,7 +46,7 @@
                                 <td><a href="{% url 'gallery' %}?period_id={{ paint_object.f_period.pk }}" >{{ paint_object.f_period.period_title.title }}</a></td>
                             </tr>
                             <tr>
-                                <th>Country</th>
+                                <th>Country of origin</th>
                                 <td><a href="{% url 'gallery' %}?artist_country_id={{ paint_object.f_artist.f_city.f_country.pk }}" >{{ paint_object.f_artist.f_city.f_country.country_name.title }}</a></td>
                             </tr>
                             <tr>
@@ -69,24 +68,25 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
 
-                    <!-- Description -->
-                    <div class="col-lg-4">
-                        <div class="header-description">
-                            <h1 class="img-rounded">Description</h1>
-                        </div>
-                        <div class="panel-description">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="panel-description-body">
-                                        <label>{{ paint_object.description }}</label>
-                                    </div>
+
+                <!-- Description -->
+                <div class="col-lg-4">
+                    <div class="header-description">
+                        <h1 class="img-rounded">Description</h1>
+                    </div>
+                    <div class="panel-description">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="panel-description-body">
+                                    <label>{{ paint_object.description }}</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </div>
