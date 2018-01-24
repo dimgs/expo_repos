@@ -54,7 +54,7 @@ def off(modeladmin, request, queryset):
 # Customization of Admin site
 class PaintingAdmin(admin.ModelAdmin):
     list_display = ('title', 'f_artist', 'f_genre', 'f_period', 'f_museum', 'published_date', 'counter_popularity', 'status', 'id')
-    list_filter = ('status', 'f_genre', 'f_period', 'published_date', 'created_year', 'rating')
+    list_filter = ('status', 'f_genre', 'f_period', 'published_date', 'rating')
     search_fields = ('title', 'description')
     actions = [on, off]
 admin.site.register(Painting, PaintingAdmin)
